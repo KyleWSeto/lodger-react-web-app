@@ -1,0 +1,71 @@
+.proj-bg-color-home {
+    background-color: skyblue;
+}
+
+.proj-bg-color-nav {
+    background-color: royalblue;
+}
+
+.proj-height {
+    height: 1200px;
+}
+
+.proj-heading-font {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.proj-font-nav {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 300;
+}
+
+.proj-color-btn {
+    background-color: aquamarine;
+    color: royalblue;
+    --bs-btn-hover-bg: aqua;
+    --bs-btn-hover-border-color: royalblue;
+}
+
+.proj-font-btn {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 300;
+}
+
+.proj-label-font {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 300;
+}
+
+.proj-heading-color {
+    color: whitesmoke;
+}
+
+.proj-label-color {
+    color: whitesmoke;
+}
+
+.proj-bg-img-register {
+    background-image: url("../../../public/images/landscape-3509713_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.proj-bg-img-login {
+    background-image: url("../../../public/images/mountains-5781537_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.proj-color-outline-nav {
+    background-color: royalblue;
+}
+
+.proj-color-nav {
+    background-color: cornflowerblue;
+}
+
+.proj-padding-nav {
+    --bs-navbar-padding-y: 0;
+}

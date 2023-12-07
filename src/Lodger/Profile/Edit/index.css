@@ -1,0 +1,124 @@
+.proj-bg-color-home {
+    background-color: skyblue;
+}
+
+.proj-bg-color-nav {
+    background-color: royalblue;
+}
+
+.proj-height {
+    height: 1200px;
+}
+
+.proj-bg-color-profile {
+    background-color: cornflowerblue;
+}
+
+.proj-bg-color-for-you {
+    background-color: aquamarine;
+}
+
+.proj-heading-profile {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+}
+
+.proj-font-nav {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 300;
+}
+
+.proj-color-btn {
+    background-color: aquamarine;
+    color: royalblue;
+    --bs-btn-hover-bg: aqua;
+    --bs-btn-hover-border-color: royalblue;
+}
+
+.proj-font-btn {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 300;
+}
+
+.proj-color-outline-nav {
+    background-color: royalblue;
+}
+
+.proj-color-nav {
+    background-color: cornflowerblue;
+}
+
+.proj-padding-nav {
+    --bs-navbar-padding-y: 0;
+}
+
+.proj-heading-card {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+}
+
+.proj-color-card-header {
+    background-color: royalblue;
+}
+
+.proj-color-card-body {
+    background-color: cornflowerblue;
+}
+
+.proj-color-link {
+    color: aquamarine;
+}
+
+.proj-color-fa-star {
+    color: gold;
+}
+
+.proj-bg-color-ul {
+    --bs-list-group-bg: aquamarine;
+    --bs-list-group-border-color: cornflowerblue;
+}
+
+.proj-font-ul {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+}
+
+.btn.proj-color-btn-follow {
+    background-color: chartreuse;
+    color: darkolivegreen;
+    --bs-btn-hover-bg: darkgreen;
+    --bs-btn-hover-border-color: darkolivegreen;
+}
+
+.btn.proj-color-btn-unfollow {
+    background-color: crimson;
+    color: darkred;
+    --bs-btn-hover-bg: firebrick;
+    --bs-btn-hover-border-color: darkred;
+}
+
+.proj-bg-color-ul {
+    --bs-list-group-bg: aquamarine;
+    --bs-list-group-border-color: cornflowerblue;
+}
+
+.proj-font-ul {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+}
+
+.proj-bg-color-follow {
+    background-color: violet;
+}
+
+.proj-decoration-link {
+    text-decoration: none;
+}
+
+.proj-color-fa-thumbs-up {
+    color: royalblue;
+}
+
+.proj-color-fa-user-plus {
+    color: navy;
+}
