@@ -15,7 +15,7 @@ function Home() {
               </div>
             </div>
           </div>
-            <div class="row d-flex justify-content-md-center pb-5 mx-auto proj-bg-color-for-you proj-gutter-row">
+            <div class="row g-0 d-flex justify-content-md-center pb-5 mx-auto proj-bg-color-for-you">
                 <div class="w-75">
                   <div class="col-md-auto text-center py-5">
                       <h1 class="display-1 proj-heading-font">For You <FaStar class="proj-color-fa-star" /></h1>
@@ -72,7 +72,7 @@ function Home() {
                   </div>
                 </div>
             </div>
-            <div class="row d-flex justify-content-md-center pb-5 mx-auto proj-bg-color-trending proj-gutter-row">
+            <div class="row g-0 d-flex justify-content-md-center pb-5 mx-auto proj-bg-color-trending">
               <div class="w-75">
                 <div class="col-md-auto text-center py-5">
                     <h1 class="display-1 proj-heading-font">Trending <FaArrowUp class="proj-color-fa-arrow-up"/></h1>
@@ -129,7 +129,7 @@ function Home() {
                 </div>
               </div>
             </div>
-            <div class="row d-flex justify-content-md-center pb-5 mx-auto proj-bg-color-highly-rated proj-gutter-row">
+            <div class="row g-0 d-flex justify-content-md-center pb-5 mx-auto proj-bg-color-highly-rated">
               <div class="w-75">
                 <div class="col-md-auto text-center py-5">
                     <h1 class="display-1 proj-heading-font">Highly Rated <FaSmile class="proj-color-fa-smile"/></h1>
