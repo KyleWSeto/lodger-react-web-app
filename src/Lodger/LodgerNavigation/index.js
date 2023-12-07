@@ -41,15 +41,15 @@ function LodgerNavigation() {
                         <a className="nav-link proj-font-nav" href="/Lodger/Profile">Profile</a>
                       </li>
                     </Link>
-                    </ul>
-                    <form className="d-flex" role="search">
-                      <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                     <Link
                     to={`/Lodger/Search`}
-                    className={`list-group-items ${pathname.includes(`Search`)}`}>
-                      <button className="btn proj-color-btn proj-font-btn" type="submit">Search</button>
+                    style={{ textDecoration: 'none' }}
+                    className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
+                      <li className="nav-item">
+                        <a className="nav-link proj-font-nav" href="/Lodger/Home">Search</a>
+                      </li>
                     </Link>
-                    </form>
+                    </ul>
                   </Navbar.Collapse>
                 </Container>
             </Navbar>

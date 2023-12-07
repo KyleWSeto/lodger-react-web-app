@@ -1,8 +1,10 @@
 import React from "react";
 import { FaStar, FaArrowUp, FaSmile } from 'react-icons/fa';
+import { Link, useLocation  } from "react-router-dom";
 import "./index.css";
 
 function Home() {
+    const { pathname } = useLocation();
     return (
         <div class="proj-bg-color-home">
           <div class="proj-bg-img-home">
@@ -25,7 +27,13 @@ function Home() {
                           <div class="card-body proj-color-card-body">
                             <h5 class="card-title proj-heading-card">[hotel search data cityCode], [hotel search data countryCode]</h5>
                             <h5 class="card-title proj-heading-card">[hotel reviews data overallRating] <FaStar class="proj-color-fa-star" /></h5>
-                            <p class="card-text"><a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information</a></p>
+                            <Link
+                                to={`/Lodger/Search/Hotel`}
+                                style={{ textDecoration: 'none' }}
+                                className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
+                                <a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
+                                </a>
+                                </Link>
                           </div>
                         </div>
                   </div>        
@@ -35,7 +43,13 @@ function Home() {
                           <div class="card-body proj-color-card-body">
                             <h5 class="card-title proj-heading-card">[hotel search data cityCode], [hotel search data countryCode]</h5>
                             <h5 class="card-title proj-heading-card">[hotel reviews data overallRating] <FaStar class="proj-color-fa-star" /></h5>
-                            <p class="card-text"><a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information</a></p>
+                            <Link
+                                    to={`/Lodger/Search/Hotel`}
+                                    style={{ textDecoration: 'none' }}
+                                    className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
+                                    <a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
+                                    </a>
+                                    </Link>
                           </div>
                         </div>
                   </div>        
@@ -45,7 +59,13 @@ function Home() {
                           <div class="card-body proj-color-card-body">
                             <h5 class="card-title proj-heading-card">[hotel search data cityCode], [hotel search data countryCode]</h5>
                             <h5 class="card-title proj-heading-card">[hotel reviews data overallRating] <FaStar class="proj-color-fa-star" /></h5>
-                            <p class="card-text"><a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information</a></p>
+                            <Link
+                                to={`/Lodger/Search/Hotel`}
+                                style={{ textDecoration: 'none' }}
+                                className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
+                                <a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
+                                </a>
+                                </Link>
                           </div>
                         </div>
                   </div>     
@@ -64,7 +84,13 @@ function Home() {
                         <div class="card-body proj-color-card-body">
                           <h5 class="card-title proj-heading-card">[hotel search data cityCode], [hotel search data countryCode]</h5>
                           <h5 class="card-title proj-heading-card">[hotel reviews data overallRating] <FaStar class="proj-color-fa-star" /></h5>
-                          <p class="card-text"><a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information</a></p>
+                          <Link
+                                to={`/Lodger/Search/Hotel`}
+                                style={{ textDecoration: 'none' }}
+                                className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
+                                <a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
+                                </a>
+                                </Link>
                         </div>
                       </div>
                 </div>        
@@ -74,7 +100,13 @@ function Home() {
                         <div class="card-body proj-color-card-body">
                           <h5 class="card-title proj-heading-card">[hotel search data cityCode], [hotel search data countryCode]</h5>
                           <h5 class="card-title proj-heading-card">[hotel reviews data overallRating] <FaStar class="proj-color-fa-star" /></h5>
-                          <p class="card-text"><a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information</a></p>
+                          <Link
+                                to={`/Lodger/Search/Hotel`}
+                                style={{ textDecoration: 'none' }}
+                                className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
+                                <a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
+                                </a>
+                                </Link>
                         </div>
                       </div>
                 </div>        
@@ -84,7 +116,13 @@ function Home() {
                         <div class="card-body proj-color-card-body">
                           <h5 class="card-title proj-heading-card">[hotel search data cityCode], [hotel search data countryCode]</h5>
                           <h5 class="card-title proj-heading-card">[hotel reviews data overallRating] <FaStar class="proj-color-fa-star" /></h5>
-                          <p class="card-text"><a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information</a></p>
+                          <Link
+                                to={`/Lodger/Search/Hotel`}
+                                style={{ textDecoration: 'none' }}
+                                className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
+                                <a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
+                                </a>
+                                </Link>
                         </div>
                       </div>
                 </div>     
@@ -103,7 +141,13 @@ function Home() {
                         <div class="card-body proj-color-card-body">
                           <h5 class="card-title proj-heading-card">[hotel search data cityCode], [hotel search data countryCode]</h5>
                           <h5 class="card-title proj-heading-card">[hotel reviews data overallRating] <FaStar class="proj-color-fa-star" /></h5>
-                          <p class="card-text"><a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information</a></p>
+                          <Link
+                                to={`/Lodger/Search/Hotel`}
+                                style={{ textDecoration: 'none' }}
+                                className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
+                                <a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
+                                </a>
+                                </Link>
                         </div>
                       </div>
                 </div>        
@@ -113,7 +157,13 @@ function Home() {
                         <div class="card-body proj-color-card-body">
                           <h5 class="card-title proj-heading-card">[hotel search data cityCode], [hotel search data countryCode]</h5>
                           <h5 class="card-title proj-heading-card">[hotel reviews data overallRating] <FaStar class="proj-color-fa-star" /></h5>
-                          <p class="card-text"><a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information</a></p>
+                          <Link
+                                to={`/Lodger/Search/Hotel`}
+                                style={{ textDecoration: 'none' }}
+                                className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
+                                <a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
+                                </a>
+                                </Link>
                         </div>
                       </div>
                 </div>        
@@ -123,7 +173,13 @@ function Home() {
                         <div class="card-body proj-color-card-body">
                           <h5 class="card-title proj-heading-card">[hotel search data cityCode], [hotel search data countryCode]</h5>
                           <h5 class="card-title proj-heading-card">[hotel reviews data overallRating] <FaStar class="proj-color-fa-star" /></h5>
-                          <p class="card-text"><a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information</a></p>
+                          <Link
+                                to={`/Lodger/Search/Hotel`}
+                                style={{ textDecoration: 'none' }}
+                                className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
+                                <a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
+                                </a>
+                                </Link>
                         </div>
                       </div>
                 </div>     

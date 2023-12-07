@@ -70,14 +70,14 @@
     color: antiquewhite;
 }
 
-.proj-color-btn-like {
+.btn.proj-color-btn-like {
     background-color: chartreuse;
     color: darkolivegreen;
     --bs-btn-hover-bg: darkgreen;
     --bs-btn-hover-border-color: darkolivegreen;
 }
 
-.proj-color-btn-unlike {
+.btn.proj-color-btn-unlike {
     background-color: crimson;
     color: darkred;
     --bs-btn-hover-bg: firebrick;
