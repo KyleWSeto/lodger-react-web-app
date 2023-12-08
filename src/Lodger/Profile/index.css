@@ -97,6 +97,34 @@
     --bs-btn-hover-border-color: darkred;
 }
 
+.btn.proj-color-btn-add {
+    background-color: chartreuse;
+    color: darkolivegreen;
+    --bs-btn-hover-bg: darkgreen;
+    --bs-btn-hover-border-color: darkolivegreen;
+}
+
+.btn.proj-color-btn-update {
+    background-color: deepskyblue;
+    color: dodgerblue;
+    --bs-btn-hover-bg: blue;
+    --bs-btn-hover-border-color: dodgerblue;
+}
+
+.btn.proj-color-btn-edit {
+    background-color: yellow;
+    color: darkorange;
+    --bs-btn-hover-bg: goldenrod;
+    --bs-btn-hover-border-color: darkorange;
+}
+
+.btn.proj-color-btn-delete {
+    background-color: crimson;
+    color: darkred;
+    --bs-btn-hover-bg: firebrick;
+    --bs-btn-hover-border-color: darkred;
+}
+
 .proj-bg-color-ul {
     --bs-list-group-bg: aquamarine;
     --bs-list-group-border-color: cornflowerblue;
@@ -121,4 +149,8 @@
 
 .proj-color-fa-user-plus {
     color: navy;
+}
+
+.proj-bg-color-ul-review {
+    --bs-list-group-bg: cornflowerblue;
 }

@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { FaUser, FaStar, FaMinus, FaPlus, FaPen, FaThumbsUp, FaUserPlus } from 'react-icons/fa';
+import { FaUser, FaStar, FaMinus, FaPlus, FaPen, FaThumbsUp, FaUserPlus, FaAdjust } from 'react-icons/fa';
 import "./index.css";
 
 function Profile() {
@@ -55,7 +55,7 @@ function Profile() {
                     </div>
                 </div>
                 <div class="proj-bg-color-for-you">
-                    <div class="mx-auto py-5 px-2 w-50">
+                    <div class="mx-auto pt-5 px-2 w-50">
                         <h3 class="proj-heading-profile">Likes <FaThumbsUp class="proj-color-fa-thumbs-up" /></h3>
                         <div class="row d-flex py-5">
                             <div class="col justify-content-center py-2">
@@ -106,6 +106,44 @@ function Profile() {
                                     </div>
                                   </div>
                             </div>     
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-bg-color-for-you">
+                    <div class="mx-auto pt-5 px-2 w-50">
+                        <div class="row d-flex">
+                            <h3 class="proj-heading-profile py-5">Admin Reviews <FaThumbsUp class="proj-color-fa-thumbs-up" /></h3>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end py-5">
+                                <input id="review" class="form-control proj-bg-color-ul proj-font-ul" title="Review" placeholder="Review" value="New Review" />
+                                <btn class="btn proj-color-btn-add">
+                                    <FaPlus /> 
+                                    Add
+                                </btn>
+                                <btn class="btn proj-color-btn-update">
+                                    <FaAdjust /> 
+                                    Update
+                                </btn>
+                            </div>
+                            <textarea id="description" class="form-control proj-bg-color-ul proj-font-ul">Review Description</textarea>
+                            <div class="py-5">
+                                <ul class="list-group">
+                                <li className="list-group-item proj-bg-color-ul-review">
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <btn class="btn proj-color-btn-edit">
+                                            <FaAdjust />  
+                                            Edit
+                                        </btn>
+                                        <btn class="btn proj-color-btn-delete">
+                                            <FaMinus />  
+                                            Delete
+                                        </btn>
+                                    </div>
+                                    <h3 class="proj-heading-profile">New Review</h3>
+                                    <p class="proj-heading-profile">Review Description</p>
+                                    <p class="proj-heading-profile">[review id]</p>
+                                </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
