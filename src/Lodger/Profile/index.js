@@ -1,9 +1,46 @@
 import { Link, useLocation } from "react-router-dom";
 import { FaUser, FaStar, FaMinus, FaPlus, FaPen, FaThumbsUp, FaUserPlus, FaAdjust } from 'react-icons/fa';
+import * as client from "../users/client";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import * as followsClient from "../follows/client";
+import { setCurrentUser } from "../users/reducer";
+import { useDispatch } from "react-redux";
 import "./index.css";
 
 function Profile() {
     const { pathname } = useLocation();
+    const [user, setUser] = useState(null);
+  const [following, setFollowing] = useState([]);
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+  const fetchUser = async () => {
+    try {
+      const user = await client.account();
+      setUser(user);
+      // fetchFollowing(user._id);
+    } catch (error) {
+      navigate("/Lodger/Login");
+    }
+  };
+  const signOut = async () => {
+    await client.signOut();
+    dispatch(setCurrentUser(null));
+    navigate("/Lodger/Login");
+  };
+  const updateUser = async () => {
+    await client.updateUser(user._id, user);
+  };
+
+//   const fetchFollowing = async (userId) => {
+//     const following = await followsClient.findUsersFollowedByUser(userId);
+//     setFollowing(following);
+//   };
+
+  useState(() => {
+    fetchUser();
+  }, []);
     return (
         <div class="proj_bg_color">
                 <div class="proj-bg-color-profile">
@@ -34,6 +71,9 @@ function Profile() {
                                             Edit Profile
                                         </btn>
                                     </Link>
+                                    <button onClick={signOut} className="btn btn-danger">
+                                        Sign Out
+                                    </button>
                                 </div>
                             </div>
                             <div class="mb-2 mx-auto p-4">

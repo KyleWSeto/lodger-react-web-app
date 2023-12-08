@@ -1,28 +1,71 @@
+import React, { useState } from "react";
+import * as client from "../users/client";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCurrentUser } from "../users/reducer";
+
 import "./index.css";
 
 function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [error, setError] = useState(null); 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const signUp = async () => {
+    try {
+      const user = await client.signUp({ firstName, lastName, username, password });
+      navigate("/Lodger/Profile");
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+  const signIn = async () => {
+    try {
+      const user = await client.signIn({ username, password });
+      dispatch(setCurrentUser(user));
+      navigate("/Lodger/Profile");
+    } catch (error) {
+      setError(error.message);
+    }
+  };
     return (
         <div>
           <div class="row d-flex justify-content-md-center">
               <div class="col-6 text-center border-end py-5 proj-bg-img-register">
                   <h1 class="display-1 proj-heading-font">Register</h1>
                   <h6 class="proj-heading-font">New User?</h6>
+                  {error && <div className="alert alert-danger">{error}</div>}
                   <form>
                     <div class="col-md-auto py-5">
                       <label for="exampleInputFirstName1" class="form-label proj-label-font proj-label-color">First Name</label>
-                      <input type="first-name" class="form-control mx-auto w-50" id="exampleInputFirstName1" aria-describedby="emailHelp" />
+                      <input onChange={(e) => setFirstName(e.target.value)}
+                          type="text"
+                          value={firstName}
+                          className="form-control mx-auto w-50" />
                     </div>
                     <div class="col-md-auto py-5">
                       <label for="exampleInputLastName1" class="form-label proj-label-font proj-label-color">Last Name</label>
-                      <input type="last-name" class="form-control mx-auto w-50" id="exampleInputLastName1" aria-describedby="emailHelp" />
+                      <input onChange={(e) => setLastName(e.target.value)}
+                          type="text"
+                          value={lastName}
+                          className="form-control mx-auto w-50" />
                     </div>
                       <div class="col-md-auto py-5">
                         <label for="exampleInputUsername1" class="form-label proj-label-font proj-label-color">Username</label>
-                        <input type="username" class="form-control mx-auto w-50" id="exampleInputUsername1" aria-describedby="emailHelp" />
+                        <input onChange={(e) => setUsername(e.target.value)}
+                          type="text"
+                          value={username}
+                          className="form-control mx-auto w-50" />
                       </div>
                       <div class="col-md-auto py-5">
                         <label for="exampleInputPassword1" class="form-label proj-label-font proj-label-color">Password</label>
-                        <input type="password" class="form-control mx-auto w-50" id="exampleInputPassword1" />
+                        <input onChange={(e) => setPassword(e.target.value)}
+                          type="password"
+                          value={password}
+                          className="form-control mx-auto w-50" />
                       </div>
                       <div class="col-md-auto py-2">
                           <h3 class="proj-heading-font proj-heading-color">Roles</h3>
@@ -41,24 +84,31 @@ function Login() {
                           </div>
                         </div>
                         <div class="col-md-auto py-2">
-                          <button class="btn proj-color-btn proj-font-btn" type="submit">Register</button>
+                          <button class="btn proj-color-btn proj-font-btn" type="submit" onClick={signUp}>Register</button>
                         </div>
                   </form>
               </div>
               <div class="col-6 text-center border-start py-5 proj-bg-img-login">
                   <h1 class="display-1 proj-heading-font">Login</h1>
                   <h6 class="proj-heading-font">Existing User?</h6>
+                  {error && <div className="alert alert-danger">{error}</div>}
                   <form>
                       <div class="col-md-auto py-5">
                         <label for="exampleInputUsername1" class="form-label proj-label-font proj-label-color">Username</label>
-                        <input type="username" class="form-control mx-auto w-50" id="exampleInputUsername1" aria-describedby="emailHelp" />
+                        <input onChange={(e) => setUsername(e.target.value)}
+                          type="text"
+                          value={username}
+                          className="form-control mx-auto w-50" />
                       </div>
                       <div class="col-md-auto py-5">
                         <label for="exampleInputPassword1" class="form-label proj-label-font proj-label-color">Password</label>
-                        <input type="password" class="form-control mx-auto w-50" id="exampleInputPassword1" />
+                        <input onChange={(e) => setPassword(e.target.value)}
+                          type="password"
+                          value={password}
+                          className="form-control mx-auto w-50" />
                       </div>
                         <div class="col-md-auto">
-                          <button class="btn proj-color-btn proj-font-btn" type="submit">Login</button>
+                          <button class="btn proj-color-btn proj-font-btn" type="submit" onClick={signIn}>Login</button>
                         </div>
                   </form>
               </div>
