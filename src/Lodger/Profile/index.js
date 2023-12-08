@@ -40,16 +40,16 @@ function Profile() {
                                 <h2 class="proj-heading-profile">[id name]</h2>
                             </div>
                             <div class="mb-2 mx-auto p-4">
-                                <label for="contact"><h3 class="proj-heading-profile">Contact</h3></label>
-                                <input id="contact" class="form-control proj-bg-color-ul proj-font-ul" title="Contact" readonly placeholder="Contact" value="[id name contact]" />
+                                <h3 class="proj-heading-profile">Contact</h3>
+                                <h4 class="proj-heading-profile">[id name contact]</h4>
                             </div>
                             <div class="mb-2 mx-auto p-4">
                                 <h3 class="proj-heading-profile">Interests</h3>
-                                <textarea id="description" class="form-control proj-bg-color-ul proj-font-ul" readonly>[id name interests]</textarea>
+                                <h4 class="proj-heading-profile">[id name interests]</h4>
                             </div>
                             <div class="mb-2 mx-auto p-4">
                                 <h4 class="proj-heading-profile">Travel Wish List</h4>
-                                <textarea id="description" class="form-control proj-bg-color-ul proj-font-ul" readonly>[id name travel-wish-list]</textarea>
+                                <h4 class="proj-heading-profile">[id name travel-wish-list]</h4>
                             </div>
                         </div> 
                     </div>
@@ -113,18 +113,20 @@ function Profile() {
                     <div class="mx-auto pt-5 px-2 w-50">
                         <div class="row d-flex">
                             <h3 class="proj-heading-profile py-5">Admin Reviews <FaThumbsUp class="proj-color-fa-thumbs-up" /></h3>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end py-5">
-                                <input id="review" class="form-control proj-bg-color-ul proj-font-ul" title="Review" placeholder="Review" value="New Review" />
-                                <btn class="btn proj-color-btn-add">
-                                    <FaPlus /> 
-                                    Add
-                                </btn>
-                                <btn class="btn proj-color-btn-update">
-                                    <FaAdjust /> 
-                                    Update
-                                </btn>
-                            </div>
-                            <textarea id="description" class="form-control proj-bg-color-ul proj-font-ul">Review Description</textarea>
+                            <form>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end py-5">
+                                    <textarea id="description" class="form-control proj-bg-color-ul proj-font-ul">New Review</textarea>
+                                    <btn class="btn proj-color-btn-add">
+                                        <FaPlus /> 
+                                        Add
+                                    </btn>
+                                    <btn class="btn proj-color-btn-update">
+                                        <FaAdjust /> 
+                                        Update
+                                    </btn>
+                                </div>
+                                <textarea id="description" class="form-control proj-bg-color-ul proj-font-ul">Review Description</textarea>
+                            </form>
                             <div class="py-5">
                                 <ul class="list-group">
                                 <li className="list-group-item proj-bg-color-ul-review">
