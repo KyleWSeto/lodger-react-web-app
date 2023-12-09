@@ -4,6 +4,7 @@ import * as client from "../users/client";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as followsClient from "../follows/client";
+import * as reviewsClient from "../reviews/client";
 import { setCurrentUser } from "../users/reducer";
 import { useDispatch } from "react-redux";
 import "./index.css";
@@ -11,6 +12,7 @@ import "./index.css";
 function Profile() {
     const { pathname } = useLocation();
     const [user, setUser] = useState(null);
+    const [review, setReview] = useState(null);
   // const [following, setFollowing] = useState([]);
   const dispatch = useDispatch();
 
@@ -19,6 +21,7 @@ function Profile() {
     try {
       const user = await client.account();
       setUser(user);
+      // fetchReviews(user._id);
       // fetchFollowing(user._id);
     } catch (error) {
       navigate("/Lodger/Login");
@@ -30,6 +33,11 @@ function Profile() {
     navigate("/Lodger/Login");
   };
 
+  const fetchReviews = async (userId) => {
+    const review = await reviewsClient.findReviewsForUser(userId);
+    setReview(review);
+  };
+
 //   const fetchFollowing = async (userId) => {
 //     const following = await followsClient.findUsersFollowedByUser(userId);
 //     setFollowing(following);
@@ -37,6 +45,7 @@ function Profile() {
 
   useState(() => {
     fetchUser();
+
   }, []);
     return (
         <div class="proj_bg_color">
