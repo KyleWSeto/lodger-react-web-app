@@ -20,6 +20,6 @@ export const findHotelsUserLikes = (userId) => {
   return response.data;
 };
 export const findUsersWhoLikeHotel = (hotelId) => {
-  const response = request.get(`${LIKES_API}/Hotels/${hotelId}/likes`);
+  const response = request.get(`${LIKES_API}/hotels/${hotelId}/likes`);
   return response.data;
 };
