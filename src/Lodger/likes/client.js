@@ -9,17 +9,17 @@ export const findAllLikes = async () => {
   const response = await request.get(`${LIKES_API}/likes`);
   return response.data;
 };
-export const createUserLikesAlbum = (userId, albumId) => {
+export const createUserLikesHotel = (userId, hotelId) => {
   const response = request.post(
-    `${LIKES_API}/users/${userId}/likes/${albumId}`
+    `${LIKES_API}/users/${userId}/likes/${hotelId}`
   );
   return response.data;
 };
-export const findAlbumsUserLikes = (userId) => {
+export const findHotelsUserLikes = (userId) => {
   const response = request.get(`${LIKES_API}/users/${userId}/likes`);
   return response.data;
 };
-export const findUsersWhoLikeAlbum = (albumId) => {
-  const response = request.get(`${LIKES_API}/albums/${albumId}/likes`);
+export const findUsersWhoLikeHotel = (hotelId) => {
+  const response = request.get(`${LIKES_API}/Hotels/${hotelId}/likes`);
   return response.data;
 };
