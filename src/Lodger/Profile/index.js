@@ -11,7 +11,7 @@ import "./index.css";
 function Profile() {
     const { pathname } = useLocation();
     const [user, setUser] = useState(null);
-  const [following, setFollowing] = useState([]);
+  // const [following, setFollowing] = useState([]);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -29,9 +29,6 @@ function Profile() {
     dispatch(setCurrentUser(null));
     navigate("/Lodger/Login");
   };
-  const updateUser = async () => {
-    await client.updateUser(user._id, user);
-  };
 
 //   const fetchFollowing = async (userId) => {
 //     const following = await followsClient.findUsersFollowedByUser(userId);
@@ -46,7 +43,7 @@ function Profile() {
                 <div class="proj-bg-color-profile">
                     <div class="flex-column mx-auto py-5 px-2 w-50">
                         <div>
-                            <h2 class="proj-heading-profile">[id name] Profile</h2><br/>
+                            <h2 class="proj-heading-profile">{user?.firstName}'s Profile</h2><br/>
                             <hr/>
                         </div>
                         <div>
@@ -77,19 +74,19 @@ function Profile() {
                                 </div>
                             </div>
                             <div class="mb-2 mx-auto p-4">
-                                <h2 class="proj-heading-profile">[id name]</h2>
+                                <h2 class="proj-heading-profile">{user?.firstName} {user?.lastName}</h2>
                             </div>
                             <div class="mb-2 mx-auto p-4">
-                                <h3 class="proj-heading-profile">Contact</h3>
-                                <h4 class="proj-heading-profile">[id name contact]</h4>
+                                <h3 class="proj-heading-profile"><u>Contact</u></h3>
+                                <h4 class="proj-heading-profile">{user?.contact}</h4>
                             </div>
                             <div class="mb-2 mx-auto p-4">
-                                <h3 class="proj-heading-profile">Interests</h3>
-                                <h4 class="proj-heading-profile">[id name interests]</h4>
+                                <h3 class="proj-heading-profile"><u>Interests</u></h3>
+                                <h4 class="proj-heading-profile">{user?.interests}</h4>
                             </div>
                             <div class="mb-2 mx-auto p-4">
-                                <h4 class="proj-heading-profile">Travel Wish List</h4>
-                                <h4 class="proj-heading-profile">[id name travel-wish-list]</h4>
+                                <h4 class="proj-heading-profile"><u>Travel Wish List</u></h4>
+                                <h4 class="proj-heading-profile">{user?.travelWishList}</h4>
                             </div>
                         </div> 
                     </div>
