@@ -1,9 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import React from "react";
 import { Navbar, Container} from "react-bootstrap";
+import { useSelector } from "react-redux";
 import "./index.css";
 
 function LodgerNavigation() {
+  const { currentUser } = useSelector((state) => state.usersReducer);
   const { pathname } = useLocation();
   return (
     <div>
@@ -33,6 +35,8 @@ function LodgerNavigation() {
                         <a className="nav-link proj-font-nav" href="/Lodger/Login">Login</a>
                       </li>
                     </Link>
+                    {currentUser && (
+                    <>
                     <Link
                     style={{ textDecoration: 'none' }}
                     to={`/Lodger/Profile`}
@@ -41,6 +45,8 @@ function LodgerNavigation() {
                         <a className="nav-link proj-font-nav" href="/Lodger/Profile">Profile</a>
                       </li>
                     </Link>
+                    </>
+                    )}
                     <Link
                     to={`/Lodger/Search`}
                     style={{ textDecoration: 'none' }}
