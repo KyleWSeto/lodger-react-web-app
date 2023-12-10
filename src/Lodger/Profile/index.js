@@ -1,27 +1,35 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { FaUser, FaStar, FaMinus, FaPlus, FaPen, FaThumbsUp, FaUserPlus, FaAdjust } from 'react-icons/fa';
 import * as client from "../users/client";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as followsClient from "../follows/client";
 import * as reviewsClient from "../reviews/client";
+// import {
+//     addReview,
+//     deleteReview,
+//     updateReview,
+//     setReview,
+//     setReviews,
+//   } from "../reviews/reviewsReducer";
 import { setCurrentUser } from "../users/reducer";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./index.css";
 
 function Profile() {
+    const { userId } = useParams();
     const { pathname } = useLocation();
     const [user, setUser] = useState(null);
-    const [review, setReview] = useState(null);
-  // const [following, setFollowing] = useState([]);
+    // const reviews = useSelector((state) => state.reviewsReducer.reviews);
+    // const review = useSelector((state) => state.reviewsReducer.review);;
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-  const fetchUser = async () => {
+  const fetchUser = async (userId) => {
     try {
       const user = await client.account();
       setUser(user);
-      // fetchReviews(user._id);
+      // fetchReviews(userId);
       // fetchFollowing(user._id);
     } catch (error) {
       navigate("/Lodger/Login");
@@ -33,10 +41,29 @@ function Profile() {
     navigate("/Lodger/Login");
   };
 
-  const fetchReviews = async (userId) => {
-    const review = await reviewsClient.findReviewsForUser(userId);
-    setReview(review);
-  };
+//   const handleAddReview = async (review) => {
+//     try {
+//       const newReview = await reviewsClient.createReview(userId, review);
+//       dispatch(addReview(newReview));
+//       dispatch(setReview({ review: "", description: "" }));
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+//   const handleDeleteReview = async (reviewId) => {
+//     try {
+//       await reviewsClient.deleteReview(reviewId);
+//       dispatch(deleteReview(reviewId));
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+//   const fetchReviews = async (userId) => {
+//     const reviews = await reviewsClient.findReviewsForUser(userId);
+//     dispatch(setReviews(reviews));
+//   };
 
 //   const fetchFollowing = async (userId) => {
 //     const following = await followsClient.findUsersFollowedByUser(userId);
@@ -44,9 +71,8 @@ function Profile() {
 //   };
 
   useState(() => {
-    fetchUser();
-
-  }, []);
+    fetchUser(userId);
+  }, [userId]);
     return (
         <div class="proj_bg_color">
                 <div class="proj-bg-color-profile">
@@ -157,16 +183,21 @@ function Profile() {
                 </div>
                 <div class="proj-bg-color-for-you">
                     <div class="mx-auto pt-5 px-2 w-50">
+                        {user?.role === "ADMIN" && (
                         <div class="row d-flex">
                             <h3 class="proj-heading-profile py-5">Admin Reviews <FaThumbsUp class="proj-color-fa-thumbs-up" /></h3>
                             <form>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end py-5">
                                     <textarea id="description" class="form-control proj-bg-color-ul proj-font-ul">New Review</textarea>
-                                    <btn class="btn proj-color-btn-add">
+                                    <btn 
+                                    // onClick={() => handleAddReview(review)} 
+                                    class="btn proj-color-btn-add">
                                         <FaPlus /> 
                                         Add
                                     </btn>
-                                    <btn class="btn proj-color-btn-update">
+                                    <btn 
+                                    // onClick={() => dispatch(updateReview(review))} 
+                                    class="btn proj-color-btn-update">
                                         <FaAdjust /> 
                                         Update
                                     </btn>
@@ -175,24 +206,50 @@ function Profile() {
                             </form>
                             <div class="py-5">
                                 <ul class="list-group">
-                                <li className="list-group-item proj-bg-color-ul-review">
+                                <li /*key={index}*/ className="list-group-item proj-bg-color-ul-review">
                                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                        <btn class="btn proj-color-btn-edit">
+                                        <btn 
+                                        // onClick={() => dispatch(setReview(review))} 
+                                        class="btn proj-color-btn-edit">
                                             <FaAdjust />  
                                             Edit
                                         </btn>
-                                        <btn class="btn proj-color-btn-delete">
+                                        <btn 
+                                        // onClick={() => handleDeleteReview(review._id)} 
+                                        class="btn proj-color-btn-delete">
                                             <FaMinus />  
                                             Delete
                                         </btn>
                                     </div>
                                     <h3 class="proj-heading-profile">New Review</h3>
                                     <p class="proj-heading-profile">Review Description</p>
-                                    <p class="proj-heading-profile">[review id]</p>
+                                    <p class="proj-heading-profile">Review Id</p>
                                 </li>
+                                {/* {reviews.map((review, index) => (
+                                    <li key={index} className="list-group-item proj-bg-color-ul-review">
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <btn 
+                                        // onClick={() => dispatch(setReview(review))} 
+                                        class="btn proj-color-btn-edit">
+                                            <FaAdjust />  
+                                            Edit
+                                        </btn>
+                                        <btn 
+                                        // onClick={() => handleDeleteReview(review._id)} 
+                                        class="btn proj-color-btn-delete">
+                                            <FaMinus />  
+                                            Delete
+                                        </btn>
+                                    </div>
+                                    <h3 class="proj-heading-profile">{review.review}</h3>
+                                    <p class="proj-heading-profile">{review.description}</p>
+                                    <p class="proj-heading-profile">{review._id}</p>
+                                </li>
+                                ))} */}
                                 </ul>
                             </div>
                         </div>
+                        )}
                     </div>
                 </div>
                 <div class="proj-bg-color-follow">
