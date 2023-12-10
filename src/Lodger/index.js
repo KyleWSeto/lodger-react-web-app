@@ -6,12 +6,14 @@ import Search from "./Search";
 import SearchHotel from "./SearchHotel";
 import Profile from "./Profile";
 import Edit from "./Profile/Edit";
+import CurrentUser from "./users/currentUser";
 import store from "./store";
 import { Provider } from "react-redux";
 
 function Lodger() {
     return (
     <Provider store={store}>
+      <CurrentUser>
       <div>
           <LodgerNavigation />
           <div>
@@ -26,6 +28,7 @@ function Lodger() {
           </Routes>
           </div>
       </div>
+      </CurrentUser>
     </Provider>
     );
  }

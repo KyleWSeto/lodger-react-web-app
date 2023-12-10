@@ -1,9 +1,11 @@
 import React from "react";
 import { FaStar, FaArrowUp, FaSmile } from 'react-icons/fa';
 import { Link, useLocation  } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./index.css";
 
 function Home() {
+    const { currentUser } = useSelector((state) => state.usersReducer);
     const { pathname } = useLocation();
     return (
         <div class="proj-bg-color-home">
@@ -15,6 +17,9 @@ function Home() {
               </div>
             </div>
           </div>
+          {currentUser && (
+            <>
+              {currentUser.role === "ADMIN" && (
             <div class="row g-0 d-flex justify-content-md-center pb-5 mx-auto proj-bg-color-for-you">
                 <div class="w-75">
                   <div class="col-md-auto text-center py-5">
@@ -72,6 +77,9 @@ function Home() {
                   </div>
                 </div>
             </div>
+            )}
+            </> 
+            )}
             <div class="row g-0 d-flex justify-content-md-center pb-5 mx-auto proj-bg-color-trending">
               <div class="w-75">
                 <div class="col-md-auto text-center py-5">
