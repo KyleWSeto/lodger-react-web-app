@@ -17,6 +17,14 @@ function SearchHotel() {
         setHotel(result);
       };
 
+      const like = async () => {
+        await likesClient.createUserLikesHotel(currentUser._id, id);
+      };
+
+      const unlike = async () => {
+        await likesClient.deleteUserLikesHotel(currentUser._id, id);
+      };
+
     const fetchCurrentUser = async () => {
         const user = await userService.account();
         setCurrentUser(user);
@@ -41,14 +49,16 @@ function SearchHotel() {
                     <div class="py-5">
                         <h1 class="proj-heading-profile">Details</h1>
                         <div class="float-end">
-                            <btn class="btn proj-color-btn-unlike">
+                            <ProtectedContent>
+                            <btn onClick={unlike} class="btn proj-color-btn-unlike">
                                 <i class="fa fa-minus"></i>
                                 Unlike
                             </btn>
-                            <btn class="btn proj-color-btn-like">
+                            <btn onClick={like} class="btn proj-color-btn-like">
                                 <i class="fa fa-plus"></i>
                                 Like
                             </btn>
+                            </ProtectedContent>
                         </div>
                         <div class="py-2">
                             <h3>Name</h3>

@@ -15,6 +15,14 @@ export const createUserLikesHotel = (userId, hotelId) => {
   );
   return response.data;
 };
+
+export const deleteUserLikesHotel = (userId, hotelId) => {
+  const response = request.delete(
+    `${LIKES_API}/users/${userId}/likes/${hotelId}`
+  );
+  return response.data;
+};
+
 export const findHotelsUserLikes = (userId) => {
   const response = request.get(`${LIKES_API}/users/${userId}/likes`);
   return response.data;
