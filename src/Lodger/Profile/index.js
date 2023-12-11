@@ -14,6 +14,7 @@ import * as reviewsClient from "../reviews/client";
 //   } from "../reviews/reviewsReducer";
 import { setCurrentUser } from "../users/reducer";
 import { useSelector, useDispatch } from "react-redux";
+import * as amadeusClient from "../SearchHotel/amadeus-service";
 import "./index.css";
 
 function Profile() {
@@ -40,6 +41,14 @@ function Profile() {
     dispatch(setCurrentUser(null));
     navigate("/Lodger/Login");
   };
+
+  const [searchResults, setSearchResults] = useState(null);
+    const [searchText, setSearchText] = useState("");
+
+    const searchForHotels = async (text) => {
+        const results = await amadeusClient.fetchHotelsByName(text);
+        setSearchResults(results);
+      };
 
 //   const handleAddReview = async (review) => {
 //     try {
@@ -72,6 +81,7 @@ function Profile() {
 
   useState(() => {
     fetchUser(userId);
+    searchForHotels(searchText);
   }, [userId]);
     return (
         <div class="proj_bg_color">
@@ -130,54 +140,27 @@ function Profile() {
                     <div class="mx-auto pt-5 px-2 w-50">
                         <h3 class="proj-heading-profile">Likes <FaThumbsUp class="proj-color-fa-thumbs-up" /></h3>
                         <div class="row d-flex py-5">
-                            <div class="col justify-content-center py-2">
-                                <div class="card" style={{width: "18rem"}}>
-                                    <h3 class="card-header proj-heading-card proj-color-card-header">[hotel search data name]</h3>
-                                    <div class="card-body proj-color-card-body">
-                                      <h5 class="card-title proj-heading-card">[hotel search data cityCode], [hotel search data countryCode]</h5>
-                                      <h5 class="card-title proj-heading-card">[hotel reviews data overallRating] <FaStar class="proj-color-fa-star" /></h5>
-                                      <Link
-                                        to={`/Lodger/Search/Hotel`}
-                                        style={{ textDecoration: 'none' }}
-                                        className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
-                                        <a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
-                                        </a>
-                                        </Link>
+                        {searchResults &&
+                            searchResults.slice(7, 10).map((hotel) => (
+                                <div class="col justify-content-center py-2">
+                                    <div class="card" style={{width: "18rem"}}>
+                                        <h3 class="card-header proj-heading-card proj-color-card-header">{hotel.name}</h3>
+                                        <div class="card-body proj-color-card-body">
+                                        <h5 class="card-title proj-heading-card">{hotel.address.cityName}, {hotel.address.countryCode}</h5>
+                                        <h5 class="card-title proj-heading-card">Not enough ratings <FaStar class="proj-color-fa-star" /></h5>
+                                        <p class="card-text">
+                                        <Link
+                                                to={`/Lodger/SearchHotel/${hotel.id}`}
+                                                style={{ textDecoration: 'none' }}
+                                                className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
+                                            <p class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
+                                            </p>
+                                            </Link>
+                                            </p>
+                                        </div>
                                     </div>
-                                  </div>
-                            </div>        
-                            <div class="col justify-content-center py-2">
-                                <div class="card" style={{width: "18rem"}}>
-                                    <h3 class="card-header proj-heading-card proj-color-card-header">[hotel search data name]</h3>
-                                    <div class="card-body proj-color-card-body">
-                                      <h5 class="card-title proj-heading-card">[hotel search data cityCode], [hotel search data countryCode]</h5>
-                                      <h5 class="card-title proj-heading-card">[hotel reviews data overallRating] <FaStar class="proj-color-fa-star" /></h5>
-                                      <Link
-                                        to={`/Lodger/Search/Hotel`}
-                                        style={{ textDecoration: 'none' }}
-                                        className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
-                                        <a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
-                                        </a>
-                                        </Link>
-                                    </div>
-                                  </div>
-                            </div>        
-                            <div class="col justify-content-center py-2">
-                                <div class="card" style={{width: "18rem"}}>
-                                    <h3 class="card-header proj-heading-card proj-color-card-header">[hotel search data name]</h3>
-                                    <div class="card-body proj-color-card-body">
-                                      <h5 class="card-title proj-heading-card">[hotel search data cityCode], [hotel search data countryCode]</h5>
-                                      <h5 class="card-title proj-heading-card">[hotel reviews data overallRating] <FaStar class="proj-color-fa-star" /></h5>
-                                      <Link
-                                        to={`/Lodger/Search/Hotel`}
-                                        style={{ textDecoration: 'none' }}
-                                        className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
-                                        <a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
-                                        </a>
-                                        </Link>
-                                    </div>
-                                  </div>
-                            </div>     
+                                </div>        
+                            ))}
                         </div>
                     </div>
                 </div>
