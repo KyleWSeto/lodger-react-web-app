@@ -40,11 +40,11 @@ function Search() {
                                           <h5 class="card-title proj-heading-card">Not enough ratings <FaStar class="proj-color-fa-star" /></h5>
                                           <p class="card-text">
                                           <Link
-                                                to={`/Lodger/Search/Hotel/${hotel._id}`}
+                                                to={`/Lodger/SearchHotel/${hotel.id}`}
                                                 style={{ textDecoration: 'none' }}
                                                 className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
-                                              <a href="/" class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
-                                              </a>
+                                              <p class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
+                                              </p>
                                               </Link>
                                             </p>
                                         </div>

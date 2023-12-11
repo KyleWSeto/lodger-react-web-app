@@ -1,11 +1,39 @@
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import * as client from "./amadeus-service";
+import * as likesClient from "../likes/client";
+import * as userService from "../users/client";
+import { useState } from "react";
+import ProtectedContent from "../users/protectedContent";
 import "./index.css";
 
 function SearchHotel() {
+    const [hotel, setHotel] = useState(null);
+    const [currentUser, setCurrentUser] = useState(null);
+    const { id } = useParams();
+
+    const fetchHotel = async (id) => {
+        const result = await client.fetchHotelById(id);
+        setHotel(result);
+      };
+
+    const fetchCurrentUser = async () => {
+        const user = await userService.account();
+        setCurrentUser(user);
+      };
+    
+      useEffect(() => {
+        fetchHotel(id);
+        fetchCurrentUser();
+      }, [id]);
+
     return (
         <div class="pb-5">
+            {hotel && (
+            <>
             <div class="proj-bg-color-detail">
                 <div class="py-5">
-                    <h1 class="text-center proj-heading-profile">[hotel search data name]</h1>
+                    <h1 class="text-center proj-heading-profile">{hotel.name}</h1>
                 </div>
             </div>
             <div class="proj-bg-color-detail-2">
@@ -25,32 +53,34 @@ function SearchHotel() {
                         <div class="py-2">
                             <h3>Name</h3>
                             <ul class="list-group">
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul">[hotel search data name]</li>
+                                <li class="list-group-item proj-bg-color-ul proj-font-ul">{hotel.name}</li>
                             </ul>
                         </div>
                         <div class="py-2">
                             <h3 class="proj-heading-profile">Location <i class="fa fa-building proj-color-fa-building"></i></h3>
                             <ul class="list-group">
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul">City: [hotel search data cityCode]</li>
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul">Country: [hotel search data countryCode]</li>
+                                <li class="list-group-item proj-bg-color-ul proj-font-ul">City: {hotel.address.cityName}</li>
+                                <li class="list-group-item proj-bg-color-ul proj-font-ul">Country: {hotel.address.countryCode}</li>
                             </ul>
                         </div>
                         <div class="py-2">
                             <h3 class="proj-heading-profile">Reviews <i class="fa fa-newspaper proj-color-fa-newspaper"></i></h3>
                             <ul class="list-group">
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul">Number of Reviews: [hotel reviews data numberOfReviews]</li>
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul">Number of Ratings: [hotel reviews data numberOfRatings]</li>
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul">Overall Rating: [hotel reviews data overallRating]</li>
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Service: [hotel reviews data sentiments service]</li>
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Facilities: [hotel reviews data sentiments facilities]</li>
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Value for Money: [hotel reviews data sentiments valueForMoney]</li>
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Location: [hotel reviews data sentiments location]</li>
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Points of Interest: [hotel reviews data sentiments pointsOfInterest]</li>
+                                <li class="list-group-item proj-bg-color-ul proj-font-ul">Number of Reviews: </li>
+                                <li class="list-group-item proj-bg-color-ul proj-font-ul">Number of Ratings: </li>
+                                <li class="list-group-item proj-bg-color-ul proj-font-ul">Overall Rating: </li>
+                                <li class="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Service: </li>
+                                <li class="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Facilities: </li>
+                                <li class="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Value for Money: </li>
+                                <li class="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Location: </li>
+                                <li class="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Points of Interest: </li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
+            </>
+            )}
         </div>
     )
 }

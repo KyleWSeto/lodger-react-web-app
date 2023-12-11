@@ -9,4 +9,9 @@ export const fetchHotelsByName = async (text) => {
     return response.data;
   };
 
-
+  export const fetchHotelById = async (hotelId) => {
+    const response = await axios.get(
+        `${HOTELS_API}/${hotelId}`
+    );
+    return response.data;
+  };
