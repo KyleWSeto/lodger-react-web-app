@@ -5,6 +5,7 @@ import Login from "./Login";
 import Search from "./Search";
 import SearchHotel from "./SearchHotel";
 import Profile from "./Profile";
+import UserDetails from "./Profile/userProfile";
 import Edit from "./Profile/Edit";
 import CurrentUser from "./users/currentUser";
 import store from "./store";
@@ -24,7 +25,7 @@ function Lodger() {
             <Route path="Search" element={<Search />} />
             <Route path="/SearchHotel/:id" element={<SearchHotel />} />
             <Route path="Profile" element={<Profile />} />
-            <Route path="Profile/:id" element={<Profile />} />
+            <Route path="Profile/:id" element={<UserDetails />} />
             <Route path="/Profile/Edit" element={<Edit />} />
           </Routes>
           </div>

@@ -30,7 +30,7 @@ function SearchHotel() {
       };
 
       const fetchUsersLikeHotel = async (id) => {
-        const result = await likesClient.findUsersWhoLikeHotel(id);
+        const result = await likesClient.findUsersWhoLikeHotel(id); // DEBUG: undefined returned from node app
         setUserLikes(result);
       };
 

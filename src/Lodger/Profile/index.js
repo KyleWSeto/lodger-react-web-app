@@ -23,10 +23,11 @@ function Profile() {
     const [user, setUser] = useState(null);
     // const reviews = useSelector((state) => state.reviewsReducer.reviews);
     // const review = useSelector((state) => state.reviewsReducer.review);;
+    // const [following, setFollowing] = useState([]);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-  const fetchUser = async (userId) => {
+  const fetchUser = async () => {
     try {
       const user = await client.account();
       setUser(user);
@@ -97,14 +98,6 @@ function Profile() {
                                     <FaUser size={84} />
                                 </div>
                                 <div class="ms-auto d-grid gap-2 d-md-block">
-                                  <btn class="btn proj-color-btn-unfollow">
-                                      <FaMinus /> 
-                                      Unfollow
-                                  </btn>
-                                  <btn class="btn proj-color-btn-follow">
-                                      <FaPlus /> 
-                                      Follow
-                                  </btn>
                                   <Link
                                     to={`/Lodger/Profile/Edit`}
                                     className={`${pathname.includes(`Edit`)}`}>
