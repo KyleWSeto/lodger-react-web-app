@@ -47,30 +47,30 @@ function UserDetails() {
     fetchUser();
   }, [id]);
   return (
-    <div class="proj_bg_color">
-            <div class="proj-bg-color-profile">
-                <div class="flex-column mx-auto py-5 px-2 w-50">
+    <div className="proj_bg_color">
+            <div className="proj-bg-color-profile">
+                <div className="flex-column mx-auto py-5 px-2 w-50">
                     <div>
-                        <h2 class="proj-heading-profile">{user?.firstName}'s Profile</h2><br/>
+                        <h2 className="proj-heading-profile">{user?.firstName}'s Profile</h2><br/>
                         <hr/>
                     </div>
                     <div>
-                        <div class="d-flex flex-row mb-2">
-                            <div class="float-start">
+                        <div className="d-flex flex-row mb-2">
+                            <div className="float-start">
                                 <FaUser size={84} />
                             </div>
-                            <div class="ms-auto d-grid gap-2 d-md-block">
+                            <div className="ms-auto d-grid gap-2 d-md-block">
                             {currentUser && (
                                 <>
                                 {currentUser?._id !== id && (
                                     <>
                                     {alreadyFollowing() ? (
-                                      <btn onClick={unfollow} class="btn proj-color-btn-unfollow">
+                                      <btn onClick={unfollow} className="btn proj-color-btn-unfollow">
                                           <FaMinus /> 
                                           Unfollow
                                       </btn>
                                         ) : (
-                                      <btn onClick={follow} class="btn proj-color-btn-follow">
+                                      <btn onClick={follow} className="btn proj-color-btn-follow">
                                           <FaPlus /> 
                                           Follow
                                       </btn>
@@ -81,28 +81,28 @@ function UserDetails() {
                             )}
                             </div>
                         </div>
-                        <div class="mb-2 mx-auto p-4">
-                            <h2 class="proj-heading-profile">{user?.firstName} {user?.lastName}</h2>
+                        <div className="mb-2 mx-auto p-4">
+                            <h2 className="proj-heading-profile">{user?.firstName} {user?.lastName}</h2>
                         </div>
-                        <div class="mb-2 mx-auto p-4">
-                            <h3 class="proj-heading-profile"><u>Contact</u></h3>
-                            <h4 class="proj-heading-profile">{user?.contact}</h4>
+                        <div className="mb-2 mx-auto p-4">
+                            <h3 className="proj-heading-profile"><u>Contact</u></h3>
+                            <h4 className="proj-heading-profile">{user?.contact}</h4>
                         </div>
-                        <div class="mb-2 mx-auto p-4">
-                            <h3 class="proj-heading-profile"><u>Interests</u></h3>
-                            <h4 class="proj-heading-profile">{user?.interests}</h4>
+                        <div className="mb-2 mx-auto p-4">
+                            <h3 className="proj-heading-profile"><u>Interests</u></h3>
+                            <h4 className="proj-heading-profile">{user?.interests}</h4>
                         </div>
-                        <div class="mb-2 mx-auto p-4">
-                            <h4 class="proj-heading-profile"><u>Travel Wish List</u></h4>
-                            <h4 class="proj-heading-profile">{user?.travelWishList}</h4>
+                        <div className="mb-2 mx-auto p-4">
+                            <h4 className="proj-heading-profile"><u>Travel Wish List</u></h4>
+                            <h4 className="proj-heading-profile">{user?.travelWishList}</h4>
                         </div>
                     </div> 
                 </div>
             </div>
-            <div class="proj-bg-color-follow">
-              <div class="mx-auto py-5 px-2 w-50">
-                  <h3 class="proj-heading-profile">Following <FaUserPlus class="proj-color-fa-user-plus" /></h3>
-                  <ul class="list-group">
+            <div className="proj-bg-color-follow">
+              <div className="mx-auto py-5 px-2 w-50">
+                  <h3 className="proj-heading-profile">Following <FaUserPlus className="proj-color-fa-user-plus" /></h3>
+                  <ul className="list-group">
                   {following.map((follows) => (
                     <Link
                         to={`/Lodger/Profile/${follows.followed._id}`}
@@ -116,10 +116,10 @@ function UserDetails() {
                 </ul>
               </div>
           </div>
-          <div class="proj-bg-color-follow">
-            <div class="mx-auto py-5 px-2 w-50">
-                <h3 class="proj-heading-profile">Followers <FaUserPlus class="proj-color-fa-user-plus"/></h3>
-                <ul class="list-group">
+          <div className="proj-bg-color-follow">
+            <div className="mx-auto py-5 px-2 w-50">
+                <h3 className="proj-heading-profile">Followers <FaUserPlus className="proj-color-fa-user-plus"/></h3>
+                <ul className="list-group">
                 {followers.map((follows) => (
                     <Link
                         to={`/Lodger/Profile/${follows.follower._id}`}

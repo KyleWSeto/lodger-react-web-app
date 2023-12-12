@@ -47,62 +47,62 @@ function SearchHotel() {
         <div>
             {hotel && (
             <>
-            <div class="proj-bg-color-detail">
-                <div class="py-5">
-                    <h1 class="text-center proj-heading-profile">{hotel.name}</h1>
+            <div className="proj-bg-color-detail">
+                <div className="py-5">
+                    <h1 className="text-center proj-heading-profile">{hotel.name}</h1>
                 </div>
             </div>
-            <div class="proj-bg-color-detail-2">
-                <div class="mx-auto p-2 w-50">
-                    <div class="py-5">
-                        <h1 class="proj-heading-profile">Details</h1>
-                        <div class="float-end">
+            <div className="proj-bg-color-detail-2">
+                <div className="mx-auto p-2 w-50">
+                    <div className="py-5">
+                        <h1 className="proj-heading-profile">Details</h1>
+                        <div className="float-end">
                             <ProtectedContent>
-                            <btn onClick={unlike} class="btn proj-color-btn-unlike">
-                                <i class="fa fa-minus"></i>
+                            <btn onClick={unlike} className="btn proj-color-btn-unlike">
+                                <i className="fa fa-minus"></i>
                                 Unlike
                             </btn>
-                            <btn onClick={like} class="btn proj-color-btn-like">
-                                <i class="fa fa-plus"></i>
+                            <btn onClick={like} className="btn proj-color-btn-like">
+                                <i className="fa fa-plus"></i>
                                 Like
                             </btn>
                             </ProtectedContent>
                         </div>
-                        <div class="py-2">
+                        <div className="py-2">
                             <h3>Name</h3>
-                            <ul class="list-group">
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul">{hotel.name}</li>
+                            <ul className="list-group">
+                                <li className="list-group-item proj-bg-color-ul proj-font-ul">{hotel.name}</li>
                             </ul>
                         </div>
-                        <div class="py-2">
-                            <h3 class="proj-heading-profile">Location <i class="fa fa-building proj-color-fa-building"></i></h3>
-                            <ul class="list-group">
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul">City: {hotel.address.cityName}</li>
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul">Country: {hotel.address.countryCode}</li>
+                        <div className="py-2">
+                            <h3 className="proj-heading-profile">Location <i className="fa fa-building proj-color-fa-building"></i></h3>
+                            <ul className="list-group">
+                                <li className="list-group-item proj-bg-color-ul proj-font-ul">City: {hotel.address.cityName}</li>
+                                <li className="list-group-item proj-bg-color-ul proj-font-ul">Country: {hotel.address.countryCode}</li>
                             </ul>
                         </div>
-                        <div class="py-2">
-                            <h3 class="proj-heading-profile">Reviews <i class="fa fa-newspaper proj-color-fa-newspaper"></i></h3>
-                            <ul class="list-group">
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul">Number of Reviews: </li>
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul">Number of Ratings: </li>
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul">Overall Rating: </li>
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Service: </li>
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Facilities: </li>
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Value for Money: </li>
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Location: </li>
-                                <li class="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Points of Interest: </li>
+                        <div className="py-2">
+                            <h3 className="proj-heading-profile">Reviews <i className="fa fa-newspaper proj-color-fa-newspaper"></i></h3>
+                            <ul className="list-group">
+                                <li className="list-group-item proj-bg-color-ul proj-font-ul">Number of Reviews: </li>
+                                <li className="list-group-item proj-bg-color-ul proj-font-ul">Number of Ratings: </li>
+                                <li className="list-group-item proj-bg-color-ul proj-font-ul">Overall Rating: </li>
+                                <li className="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Service: </li>
+                                <li className="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Facilities: </li>
+                                <li className="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Value for Money: </li>
+                                <li className="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Location: </li>
+                                <li className="list-group-item proj-bg-color-ul proj-font-ul proj-indent-module">Points of Interest: </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="mx-auto py-5 px-2 w-50">
-                    <h3 class="proj-heading-profile">Users who like {hotel.name} <FaUser class="proj-color-fa-user-plus" /></h3>
-                    <ul class="list-group">
+                <div className="mx-auto py-5 px-2 w-50">
+                    <h3 className="proj-heading-profile">Users who like {hotel.name} <FaUser className="proj-color-fa-user-plus" /></h3>
+                    <ul className="list-group">
                     {userLikes &&
                         userLikes.map((user) => (
                     <Link to={`/Lodger/Profile/${user._id}`}>
-                        <li class="list-group-item proj-bg-color-ul proj-font-ul">{user.firstName} {user.lastName}</li>
+                        <li className="list-group-item proj-bg-color-ul proj-font-ul">{user.firstName} {user.lastName}</li>
                     </Link>
                     ))}
                 </ul>

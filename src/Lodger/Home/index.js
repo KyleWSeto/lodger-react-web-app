@@ -20,38 +20,38 @@ function Home() {
       }, []);
     const { pathname } = useLocation();
     return (
-        <div class="proj-bg-color-home">
-          <div class="proj-bg-img-home">
-            <div class="row g-0 d-flex justify-content-md-center pb-5">
-              <div class="col-md-auto text-center">
-                <img src="../../images/Lodger-logos_transparent.png" alt="Background" class="img-fluid proj-size-logo" />
-                <h1 class="proj-font-color">Search for an abode for your ideal vacation destination!</h1>
+        <div className="proj-bg-color-home">
+          <div className="proj-bg-img-home">
+            <div className="row g-0 d-flex justify-content-md-center pb-5">
+              <div className="col-md-auto text-center">
+                <img src="../../images/Lodger-logos_transparent.png" alt="Background" className="img-fluid proj-size-logo" />
+                <h1 className="proj-font-color">Search for an abode for your ideal vacation destination!</h1>
               </div>
             </div>
           </div>
           {currentUser && (
             <>
               {currentUser.role === "ADMIN" && (
-            <div class="row g-0 d-flex justify-content-md-center pb-5 mx-auto proj-bg-color-for-you">
-                <div class="w-75">
-                  <div class="col-md-auto text-center py-5">
-                      <h1 class="display-1 proj-heading-font">For You <FaStar class="proj-color-fa-star" /></h1>
+            <div className="row g-0 d-flex justify-content-md-center pb-5 mx-auto proj-bg-color-for-you">
+                <div className="w-75">
+                  <div className="col-md-auto text-center py-5">
+                      <h1 className="display-1 proj-heading-font">For You <FaStar className="proj-color-fa-star" /></h1>
                   </div>
-                  <div class="row d-flex">
+                  <div className="row d-flex">
                   {searchResults &&
                     searchResults.slice(7, 10).map((hotel) => (
-                      <div class="col justify-content-center py-2">
-                          <div class="card" style={{width: "18rem"}}>
-                              <h3 class="card-header proj-heading-card proj-color-card-header">{hotel.name}</h3>
-                              <div class="card-body proj-color-card-body">
-                                <h5 class="card-title proj-heading-card">{hotel.address.cityName}, {hotel.address.countryCode}</h5>
-                                <h5 class="card-title proj-heading-card">Not enough ratings <FaStar class="proj-color-fa-star" /></h5>
-                                <p class="card-text">
+                      <div className="col justify-content-center py-2">
+                          <div className="card" style={{width: "18rem"}}>
+                              <h3 className="card-header proj-heading-card proj-color-card-header">{hotel.name}</h3>
+                              <div className="card-body proj-color-card-body">
+                                <h5 className="card-title proj-heading-card">{hotel.address.cityName}, {hotel.address.countryCode}</h5>
+                                <h5 className="card-title proj-heading-card">Not enough ratings <FaStar className="proj-color-fa-star" /></h5>
+                                <p className="card-text">
                                 <Link
                                       to={`/Lodger/SearchHotel/${hotel.id}`}
                                       style={{ textDecoration: 'none' }}
                                       className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
-                                    <p class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
+                                    <p className="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
                                     </p>
                                     </Link>
                                   </p>
@@ -65,26 +65,26 @@ function Home() {
             )}
             </> 
             )}
-            <div class="row g-0 d-flex justify-content-md-center pb-5 mx-auto proj-bg-color-trending">
-              <div class="w-75">
-                <div class="col-md-auto text-center py-5">
-                    <h1 class="display-1 proj-heading-font">Trending <FaArrowUp class="proj-color-fa-arrow-up"/></h1>
+            <div className="row g-0 d-flex justify-content-md-center pb-5 mx-auto proj-bg-color-trending">
+              <div className="w-75">
+                <div className="col-md-auto text-center py-5">
+                    <h1 className="display-1 proj-heading-font">Trending <FaArrowUp className="proj-color-fa-arrow-up"/></h1>
                 </div>
-                <div class="row d-flex">
+                <div className="row d-flex">
                 {searchResults &&
                   searchResults.slice(0, 3).map((hotel) => (
-                    <div class="col justify-content-center py-2">
-                        <div class="card" style={{width: "18rem"}}>
-                            <h3 class="card-header proj-heading-card proj-color-card-header">{hotel.name}</h3>
-                            <div class="card-body proj-color-card-body">
-                              <h5 class="card-title proj-heading-card">{hotel.address.cityName}, {hotel.address.countryCode}</h5>
-                              <h5 class="card-title proj-heading-card">Not enough ratings <FaStar class="proj-color-fa-star" /></h5>
-                              <p class="card-text">
+                    <div className="col justify-content-center py-2">
+                        <div className="card" style={{width: "18rem"}}>
+                            <h3 className="card-header proj-heading-card proj-color-card-header">{hotel.name}</h3>
+                            <div className="card-body proj-color-card-body">
+                              <h5 className="card-title proj-heading-card">{hotel.address.cityName}, {hotel.address.countryCode}</h5>
+                              <h5 className="card-title proj-heading-card">Not enough ratings <FaStar className="proj-color-fa-star" /></h5>
+                              <p className="card-text">
                               <Link
                                     to={`/Lodger/SearchHotel/${hotel.id}`}
                                     style={{ textDecoration: 'none' }}
                                     className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
-                                  <p class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
+                                  <p className="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
                                   </p>
                                   </Link>
                                 </p>
@@ -95,26 +95,26 @@ function Home() {
                 </div>
               </div>
             </div>
-            <div class="row g-0 d-flex justify-content-md-center pb-5 mx-auto proj-bg-color-highly-rated">
-              <div class="w-75">
-                <div class="col-md-auto text-center py-5">
-                    <h1 class="display-1 proj-heading-font">Highly Rated <FaSmile class="proj-color-fa-smile"/></h1>
+            <div className="row g-0 d-flex justify-content-md-center pb-5 mx-auto proj-bg-color-highly-rated">
+              <div className="w-75">
+                <div className="col-md-auto text-center py-5">
+                    <h1 className="display-1 proj-heading-font">Highly Rated <FaSmile className="proj-color-fa-smile"/></h1>
                 </div>
-                <div class="row d-flex">
+                <div className="row d-flex">
                 {searchResults &&
                   searchResults.slice(4, 7).map((hotel) => (
-                    <div class="col justify-content-center py-2">
-                        <div class="card" style={{width: "18rem"}}>
-                            <h3 class="card-header proj-heading-card proj-color-card-header">{hotel.name}</h3>
-                            <div class="card-body proj-color-card-body">
-                              <h5 class="card-title proj-heading-card">{hotel.address.cityName}, {hotel.address.countryCode}</h5>
-                              <h5 class="card-title proj-heading-card">Not enough ratings <FaStar class="proj-color-fa-star" /></h5>
-                              <p class="card-text">
+                    <div className="col justify-content-center py-2">
+                        <div className="card" style={{width: "18rem"}}>
+                            <h3 className="card-header proj-heading-card proj-color-card-header">{hotel.name}</h3>
+                            <div className="card-body proj-color-card-body">
+                              <h5 className="card-title proj-heading-card">{hotel.address.cityName}, {hotel.address.countryCode}</h5>
+                              <h5 className="card-title proj-heading-card">Not enough ratings <FaStar className="proj-color-fa-star" /></h5>
+                              <p className="card-text">
                               <Link
                                     to={`/Lodger/SearchHotel/${hotel.id}`}
                                     style={{ textDecoration: 'none' }}
                                     className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
-                                  <p class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
+                                  <p className="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
                                   </p>
                                   </Link>
                                 </p>

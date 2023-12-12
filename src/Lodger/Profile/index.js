@@ -92,23 +92,23 @@ const fetchFollowers = async (userId) => {
     searchForHotels(searchText);
   }, []);
     return (
-        <div class="proj_bg_color">
-                <div class="proj-bg-color-profile">
-                    <div class="flex-column mx-auto py-5 px-2 w-50">
+        <div className="proj_bg_color">
+                <div className="proj-bg-color-profile">
+                    <div className="flex-column mx-auto py-5 px-2 w-50">
                         <div>
-                            <h2 class="proj-heading-profile">{user?.firstName}'s Profile</h2><br/>
+                            <h2 className="proj-heading-profile">{user?.firstName}'s Profile</h2><br/>
                             <hr/>
                         </div>
                         <div>
-                            <div class="d-flex flex-row mb-2">
-                                <div class="float-start">
+                            <div className="d-flex flex-row mb-2">
+                                <div className="float-start">
                                     <FaUser size={84} />
                                 </div>
-                                <div class="ms-auto d-grid gap-2 d-md-block">
+                                <div className="ms-auto d-grid gap-2 d-md-block">
                                   <Link
                                     to={`/Lodger/Profile/Edit`}
                                     className={`${pathname.includes(`Edit`)}`}>
-                                        <btn class="btn proj-color-btn">
+                                        <btn className="btn proj-color-btn">
                                             <FaPen /> 
                                             Edit Profile
                                         </btn>
@@ -118,42 +118,42 @@ const fetchFollowers = async (userId) => {
                                     </button>
                                 </div>
                             </div>
-                            <div class="mb-2 mx-auto p-4">
-                                <h2 class="proj-heading-profile">{user?.firstName} {user?.lastName}</h2>
+                            <div className="mb-2 mx-auto p-4">
+                                <h2 className="proj-heading-profile">{user?.firstName} {user?.lastName}</h2>
                             </div>
-                            <div class="mb-2 mx-auto p-4">
-                                <h3 class="proj-heading-profile"><u>Contact</u></h3>
-                                <h4 class="proj-heading-profile">{user?.contact}</h4>
+                            <div className="mb-2 mx-auto p-4">
+                                <h3 className="proj-heading-profile"><u>Contact</u></h3>
+                                <h4 className="proj-heading-profile">{user?.contact}</h4>
                             </div>
-                            <div class="mb-2 mx-auto p-4">
-                                <h3 class="proj-heading-profile"><u>Interests</u></h3>
-                                <h4 class="proj-heading-profile">{user?.interests}</h4>
+                            <div className="mb-2 mx-auto p-4">
+                                <h3 className="proj-heading-profile"><u>Interests</u></h3>
+                                <h4 className="proj-heading-profile">{user?.interests}</h4>
                             </div>
-                            <div class="mb-2 mx-auto p-4">
-                                <h4 class="proj-heading-profile"><u>Travel Wish List</u></h4>
-                                <h4 class="proj-heading-profile">{user?.travelWishList}</h4>
+                            <div className="mb-2 mx-auto p-4">
+                                <h4 className="proj-heading-profile"><u>Travel Wish List</u></h4>
+                                <h4 className="proj-heading-profile">{user?.travelWishList}</h4>
                             </div>
                         </div> 
                     </div>
                 </div>
-                <div class="proj-bg-color-for-you">
-                    <div class="mx-auto pt-5 px-2 w-50">
-                        <h3 class="proj-heading-profile">Likes <FaThumbsUp class="proj-color-fa-thumbs-up" /></h3>
-                        <div class="row d-flex py-5">
+                <div className="proj-bg-color-for-you">
+                    <div className="mx-auto pt-5 px-2 w-50">
+                        <h3 className="proj-heading-profile">Likes <FaThumbsUp className="proj-color-fa-thumbs-up" /></h3>
+                        <div className="row d-flex py-5">
                         {searchResults &&
                             searchResults.slice(7, 10).map((hotel) => (
-                                <div class="col justify-content-center py-2">
-                                    <div class="card" style={{width: "18rem"}}>
-                                        <h3 class="card-header proj-heading-card proj-color-card-header">{hotel.name}</h3>
-                                        <div class="card-body proj-color-card-body">
-                                        <h5 class="card-title proj-heading-card">{hotel.address.cityName}, {hotel.address.countryCode}</h5>
-                                        <h5 class="card-title proj-heading-card">Not enough ratings <FaStar class="proj-color-fa-star" /></h5>
-                                        <p class="card-text">
+                                <div className="col justify-content-center py-2">
+                                    <div className="card" style={{width: "18rem"}}>
+                                        <h3 className="card-header proj-heading-card proj-color-card-header">{hotel.name}</h3>
+                                        <div className="card-body proj-color-card-body">
+                                        <h5 className="card-title proj-heading-card">{hotel.address.cityName}, {hotel.address.countryCode}</h5>
+                                        <h5 className="card-title proj-heading-card">Not enough ratings <FaStar className="proj-color-fa-star" /></h5>
+                                        <p className="card-text">
                                         <Link
                                                 to={`/Lodger/SearchHotel/${hotel.id}`}
                                                 style={{ textDecoration: 'none' }}
                                                 className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
-                                            <p class="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
+                                            <p className="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
                                             </p>
                                             </Link>
                                             </p>
@@ -164,69 +164,69 @@ const fetchFollowers = async (userId) => {
                         </div>
                     </div>
                 </div>
-                <div class="proj-bg-color-for-you">
-                    <div class="mx-auto pt-5 px-2 w-50">
+                <div className="proj-bg-color-for-you">
+                    <div className="mx-auto pt-5 px-2 w-50">
                         {user?.role === "ADMIN" && (
-                        <div class="row d-flex">
-                            <h3 class="proj-heading-profile py-5">Admin Reviews <FaThumbsUp class="proj-color-fa-thumbs-up" /></h3>
+                        <div className="row d-flex">
+                            <h3 className="proj-heading-profile py-5">Admin Reviews <FaThumbsUp className="proj-color-fa-thumbs-up" /></h3>
                             <form>
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end py-5">
-                                    <textarea id="description" class="form-control proj-bg-color-ul proj-font-ul">New Review</textarea>
+                                <div className="d-grid gap-2 d-md-flex justify-content-md-end py-5">
+                                    <textarea id="description" className="form-control proj-bg-color-ul proj-font-ul">New Review</textarea>
                                     <btn 
                                     // onClick={() => handleAddReview(review)} 
-                                    class="btn proj-color-btn-add">
+                                    className="btn proj-color-btn-add">
                                         <FaPlus /> 
                                         Add
                                     </btn>
                                     <btn 
                                     // onClick={() => dispatch(updateReview(review))} 
-                                    class="btn proj-color-btn-update">
+                                    className="btn proj-color-btn-update">
                                         <FaAdjust /> 
                                         Update
                                     </btn>
                                 </div>
-                                <textarea id="description" class="form-control proj-bg-color-ul proj-font-ul">Review Description</textarea>
+                                <textarea id="description" className="form-control proj-bg-color-ul proj-font-ul">Review Description</textarea>
                             </form>
-                            <div class="py-5">
-                                <ul class="list-group">
+                            <div className="py-5">
+                                <ul className="list-group">
                                 <li /*key={index}*/ className="list-group-item proj-bg-color-ul-review">
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                                         <btn 
                                         // onClick={() => dispatch(setReview(review))} 
-                                        class="btn proj-color-btn-edit">
+                                        className="btn proj-color-btn-edit">
                                             <FaAdjust />  
                                             Edit
                                         </btn>
                                         <btn 
                                         // onClick={() => handleDeleteReview(review._id)} 
-                                        class="btn proj-color-btn-delete">
+                                        className="btn proj-color-btn-delete">
                                             <FaMinus />  
                                             Delete
                                         </btn>
                                     </div>
-                                    <h3 class="proj-heading-profile">New Review</h3>
-                                    <p class="proj-heading-profile">Review Description</p>
-                                    <p class="proj-heading-profile">Review Id</p>
+                                    <h3 className="proj-heading-profile">New Review</h3>
+                                    <p className="proj-heading-profile">Review Description</p>
+                                    <p className="proj-heading-profile">Review Id</p>
                                 </li>
                                 {/* {reviews.map((review, index) => (
                                     <li key={index} className="list-group-item proj-bg-color-ul-review">
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                                         <btn 
                                         // onClick={() => dispatch(setReview(review))} 
-                                        class="btn proj-color-btn-edit">
+                                        className="btn proj-color-btn-edit">
                                             <FaAdjust />  
                                             Edit
                                         </btn>
                                         <btn 
                                         // onClick={() => handleDeleteReview(review._id)} 
-                                        class="btn proj-color-btn-delete">
+                                        className="btn proj-color-btn-delete">
                                             <FaMinus />  
                                             Delete
                                         </btn>
                                     </div>
-                                    <h3 class="proj-heading-profile">{review.review}</h3>
-                                    <p class="proj-heading-profile">{review.description}</p>
-                                    <p class="proj-heading-profile">{review._id}</p>
+                                    <h3 className="proj-heading-profile">{review.review}</h3>
+                                    <p className="proj-heading-profile">{review.description}</p>
+                                    <p className="proj-heading-profile">{review._id}</p>
                                 </li>
                                 ))} */}
                                 </ul>
@@ -235,10 +235,10 @@ const fetchFollowers = async (userId) => {
                         )}
                     </div>
                 </div>
-                <div class="proj-bg-color-follow">
-              <div class="mx-auto py-5 px-2 w-50">
-                  <h3 class="proj-heading-profile">Following <FaUserPlus class="proj-color-fa-user-plus" /></h3>
-                  <ul class="list-group">
+                <div className="proj-bg-color-follow">
+              <div className="mx-auto py-5 px-2 w-50">
+                  <h3 className="proj-heading-profile">Following <FaUserPlus className="proj-color-fa-user-plus" /></h3>
+                  <ul className="list-group">
                   {following.map((follows) => (
                     <Link
                         to={`/Lodger/Profile/${follows.followed._id}`}
@@ -252,10 +252,10 @@ const fetchFollowers = async (userId) => {
                 </ul>
               </div>
           </div>
-          <div class="proj-bg-color-follow">
-            <div class="mx-auto py-5 px-2 w-50">
-                <h3 class="proj-heading-profile">Followers <FaUserPlus class="proj-color-fa-user-plus"/></h3>
-                <ul class="list-group">
+          <div className="proj-bg-color-follow">
+            <div className="mx-auto py-5 px-2 w-50">
+                <h3 className="proj-heading-profile">Followers <FaUserPlus className="proj-color-fa-user-plus"/></h3>
+                <ul className="list-group">
                 {followers.map((follows) => (
                     <Link
                         to={`/Lodger/Profile/${follows.follower._id}`}

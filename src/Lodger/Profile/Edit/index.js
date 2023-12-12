@@ -25,22 +25,22 @@ function Edit() {
         fetchUser();
       }, []);
     return (
-        <div class="proj-bg-color-profile py-5">
-            <div class="mb-2 mx-auto p-2 w-50">
+        <div className="proj-bg-color-profile py-5">
+            <div className="mb-2 mx-auto p-2 w-50">
                 <div>
-                    <h2 class="proj-heading-profile">{user?.firstName}'s Profile</h2><br/>
+                    <h2 className="proj-heading-profile">{user?.firstName}'s Profile</h2><br/>
                     <hr/>
                 </div>
                 <div>
-                    <div class="d-flex flex-row mb-2">
-                        <div class="float-start">
+                    <div className="d-flex flex-row mb-2">
+                        <div className="float-start">
                             <FaUser size={84} />
                         </div>
-                        <div class="ms-auto">
+                        <div className="ms-auto">
                             <Link
                                 to={`/Lodger/Profile`}
                                 className={`${pathname.includes(`Profile`)}`}>
-                                <btn class="btn proj-color-btn">
+                                <btn className="btn proj-color-btn">
                                     <FaPen /> 
                                     Cancel Editing
                                 </btn>
@@ -48,29 +48,29 @@ function Edit() {
                         </div>
                     </div>
                     <form>
-                        <div class="mb-2 mx-auto p-2">
-                            <label for="name"><h4 class="proj-heading-profile">First Name</h4></label>
+                        <div className="mb-2 mx-auto p-2">
+                            <label for="name"><h4 className="proj-heading-profile">First Name</h4></label>
                             <input onChange={(e) => setUser({ ...user, firstName: e.target.value })}
                                 type="text"
                                 value={user?.firstName}
                                 className="form-control" />
                         </div>
-                        <div class="mb-2 mx-auto p-2">
-                            <label for="name"><h4 class="proj-heading-profile">Last Name</h4></label>
+                        <div className="mb-2 mx-auto p-2">
+                            <label for="name"><h4 className="proj-heading-profile">Last Name</h4></label>
                             <input onChange={(e) => setUser({ ...user, lastName: e.target.value })}
                                 type="text"
                                 value={user?.lastName}
                                 className="form-control" />
                         </div>
-                        <div class="mb-2 mx-auto p-2">
-                            <label for="contact"><h4 class="proj-heading-profile">Contact</h4></label>
+                        <div className="mb-2 mx-auto p-2">
+                            <label for="contact"><h4 className="proj-heading-profile">Contact</h4></label>
                             <input onChange={(e) => setUser({ ...user, contact: e.target.value })}
                                 type="text"
                                 value={user?.contact}
                                 className="form-control" />
                         </div>
-                        <div class="mb-2 mx-auto p-2">
-                            <h4 class="proj-heading-profile">Interests</h4>
+                        <div className="mb-2 mx-auto p-2">
+                            <h4 className="proj-heading-profile">Interests</h4>
                             <input
                                 onChange={(e) => setUser({ ...user, interests: e.target.value })}
                                 type="text"
@@ -78,8 +78,8 @@ function Edit() {
                                 className="form-control"
                             />
                         </div>
-                        <div class="mb-2 mx-auto p-2">
-                            <h4 class="proj-heading-profile">Travel Wish List</h4>
+                        <div className="mb-2 mx-auto p-2">
+                            <h4 className="proj-heading-profile">Travel Wish List</h4>
                             <input
                                 onChange={(e) => setUser({ ...user, travelWishList: e.target.value })}
                                 type="text"
@@ -87,19 +87,19 @@ function Edit() {
                                 className="form-control"
                             />
                         </div>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                             <Link
                             to={`/Lodger/Profile`}
                             className={`${pathname.includes(`Profile`)}`}>
                                 <btn onClick={updateUser}>
-                                    <a href="index.html" class="btn proj-color-btn float-end">Save Profile</a>
+                                    <a href="index.html" className="btn proj-color-btn float-end">Save Profile</a>
                                 </btn>
                             </Link>
                             <Link
                             to={`/Lodger/Profile`}
                             className={`${pathname.includes(`Profile`)}`}>
                                 <btn>
-                                    <a href="index.html" class="btn proj-color-btn float-end">Cancel</a>
+                                    <a href="index.html" className="btn proj-color-btn float-end">Cancel</a>
                                 </btn>
                             </Link>
                         </div>
