@@ -5,13 +5,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as followsClient from "../follows/client";
 import * as reviewsClient from "../reviews/client";
-// import {
-//     addReview,
-//     deleteReview,
-//     updateReview,
-//     setReview,
-//     setReviews,
-//   } from "../reviews/reviewsReducer";
 import { setCurrentUser } from "../users/reducer";
 import { useSelector, useDispatch } from "react-redux";
 import * as amadeusClient from "../SearchHotel/amadeus-service";
@@ -19,10 +12,10 @@ import "./index.css";
 
 function Profile() {
     const { userId } = useParams();
+    const { currentUser } = useSelector((state) => state.usersReducer);
     const { pathname } = useLocation();
     const [user, setUser] = useState(null);
-    // const reviews = useSelector((state) => state.reviewsReducer.reviews);
-    // const review = useSelector((state) => state.reviewsReducer.review);;
+    const [reviews, setReviews] = useState([]);
     const [followers, setFollowers] = useState([]);
     const [following, setFollowing] = useState([]);
   const dispatch = useDispatch();
@@ -32,7 +25,7 @@ function Profile() {
     try {
       const user = await client.account();
       setUser(user);
-      // fetchReviews(userId);
+      fetchReviews(user._id);
       fetchFollowers(user._id);
       fetchFollowing(user._id);
     } catch (error) {
@@ -53,29 +46,24 @@ function Profile() {
         setSearchResults(results);
       };
 
-//   const handleAddReview = async (review) => {
-//     try {
-//       const newReview = await reviewsClient.createReview(userId, review);
-//       dispatch(addReview(newReview));
-//       dispatch(setReview({ review: "", description: "" }));
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
+      const [review, setReview] = useState({
+        review: "New Review",
+        description: "Review Description",
+        userId: currentUser._id,
+      });
 
-//   const handleDeleteReview = async (reviewId) => {
-//     try {
-//       await reviewsClient.deleteReview(reviewId);
-//       dispatch(deleteReview(reviewId));
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
+      const addReview = async (userId, review) => {
+        await reviewsClient.createReview(userId, review);
+      };
+    
+      const deleteReview = async (reviewId) => {
+        await reviewsClient.deleteReview(reviewId);
+      };
 
-//   const fetchReviews = async (userId) => {
-//     const reviews = await reviewsClient.findReviewsForUser(userId);
-//     dispatch(setReviews(reviews));
-//   };
+  const fetchReviews = async (userId) => {
+    const reviews = await reviewsClient.findReviewsForUser(userId);
+    setReviews(reviews);
+  };
 
 const fetchFollowers = async (userId) => {
     const followers = await followsClient.findUsersFollowingUser(userId);
@@ -90,7 +78,7 @@ const fetchFollowers = async (userId) => {
   useState(() => {
     fetchUser();
     searchForHotels(searchText);
-  }, []);
+  }, [userId]);
     return (
         <div className="proj_bg_color">
                 <div className="proj-bg-color-profile">
@@ -171,9 +159,13 @@ const fetchFollowers = async (userId) => {
                             <h3 className="proj-heading-profile py-5">Admin Reviews <FaThumbsUp className="proj-color-fa-thumbs-up" /></h3>
                             <form>
                                 <div className="d-grid gap-2 d-md-flex justify-content-md-end py-5">
-                                    <textarea id="description" className="form-control proj-bg-color-ul proj-font-ul">New Review</textarea>
+                                    <input value={review.review}
+                                    onChange={(e) => setReview({
+                                        ...review, review: e.target.value })}
+                                        className="form-control proj-bg-color-ul proj-font-ul"
+                                    />
                                     <btn 
-                                    // onClick={() => handleAddReview(review)} 
+                                    onClick={() => addReview(userId, review)} 
                                     className="btn proj-color-btn-add">
                                         <FaPlus /> 
                                         Add
@@ -185,30 +177,15 @@ const fetchFollowers = async (userId) => {
                                         Update
                                     </btn>
                                 </div>
-                                <textarea id="description" className="form-control proj-bg-color-ul proj-font-ul">Review Description</textarea>
+                                <textarea value={review.description}
+                                onChange={(e) => setReview({
+                                    ...review, description: e.target.value })}
+                                    className="form-control proj-bg-color-ul proj-font-ul"
+                                />
                             </form>
                             <div className="py-5">
                                 <ul className="list-group">
-                                <li /*key={index}*/ className="list-group-item proj-bg-color-ul-review">
-                                    <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                                        <btn 
-                                        // onClick={() => dispatch(setReview(review))} 
-                                        className="btn proj-color-btn-edit">
-                                            <FaAdjust />  
-                                            Edit
-                                        </btn>
-                                        <btn 
-                                        // onClick={() => handleDeleteReview(review._id)} 
-                                        className="btn proj-color-btn-delete">
-                                            <FaMinus />  
-                                            Delete
-                                        </btn>
-                                    </div>
-                                    <h3 className="proj-heading-profile">New Review</h3>
-                                    <p className="proj-heading-profile">Review Description</p>
-                                    <p className="proj-heading-profile">Review Id</p>
-                                </li>
-                                {/* {reviews.map((review, index) => (
+                                {reviews.map((review, index) => (
                                     <li key={index} className="list-group-item proj-bg-color-ul-review">
                                     <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                                         <btn 
@@ -218,7 +195,7 @@ const fetchFollowers = async (userId) => {
                                             Edit
                                         </btn>
                                         <btn 
-                                        // onClick={() => handleDeleteReview(review._id)} 
+                                        onClick={() => deleteReview(review._id)} 
                                         className="btn proj-color-btn-delete">
                                             <FaMinus />  
                                             Delete
@@ -228,7 +205,7 @@ const fetchFollowers = async (userId) => {
                                     <p className="proj-heading-profile">{review.description}</p>
                                     <p className="proj-heading-profile">{review._id}</p>
                                 </li>
-                                ))} */}
+                                ))}
                                 </ul>
                             </div>
                         </div>
@@ -241,7 +218,7 @@ const fetchFollowers = async (userId) => {
                   <ul className="list-group">
                   {following.map((follows) => (
                     <Link
-                        to={`/Lodger/Profile/${follows.followed._id}`}
+                        to={`/Lodger/Profile/More/${follows.followed._id}`}
                         key={follows._id}
                         className="list-group-item proj-bg-color-ul"
                     >
@@ -258,7 +235,7 @@ const fetchFollowers = async (userId) => {
                 <ul className="list-group">
                 {followers.map((follows) => (
                     <Link
-                        to={`/Lodger/Profile/${follows.follower._id}`}
+                        to={`/Lodger/Profile/More/${follows.follower._id}`}
                         key={follows._id}
                         className="list-group-item proj-bg-color-ul"
                     >

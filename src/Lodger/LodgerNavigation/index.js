@@ -39,7 +39,7 @@ function LodgerNavigation() {
                     <>
                     <Link
                     style={{ textDecoration: 'none' }}
-                    to={`/Lodger/Profile`}
+                    to={`/Lodger/Profile/${currentUser._id}`}
                     className={`list-group-items ${pathname.includes(`Profile`) && "active"}`}>
                       <li className="nav-item">
                         <a className="nav-link proj-font-nav" href="/Lodger/Profile">Profile</a>
