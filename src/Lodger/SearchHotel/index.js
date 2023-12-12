@@ -5,16 +5,20 @@ import * as likesClient from "../likes/client";
 import * as userService from "../users/client";
 import { useState } from "react";
 import ProtectedContent from "../users/protectedContent";
+import { Link } from "react-router-dom";
+import { FaUser } from "react-icons/fa"
 import "./index.css";
 
 function SearchHotel() {
     const [hotel, setHotel] = useState(null);
+    const [userLikes, setUserLikes] = useState([]);
     const [currentUser, setCurrentUser] = useState(null);
     const { id } = useParams();
 
     const fetchHotel = async (id) => {
         const result = await client.fetchHotelById(id);
         setHotel(result);
+        fetchUsersLikeHotel(id);
       };
 
       const like = async () => {
@@ -23,6 +27,11 @@ function SearchHotel() {
 
       const unlike = async () => {
         await likesClient.deleteUserLikesHotel(currentUser._id, id);
+      };
+
+      const fetchUsersLikeHotel = async (id) => {
+        const result = await likesClient.findUsersWhoLikeHotel(id);
+        setUserLikes(result);
       };
 
     const fetchCurrentUser = async () => {
@@ -34,9 +43,8 @@ function SearchHotel() {
         fetchHotel(id);
         fetchCurrentUser();
       }, [id]);
-
     return (
-        <div class="pb-5">
+        <div>
             {hotel && (
             <>
             <div class="proj-bg-color-detail">
@@ -88,6 +96,17 @@ function SearchHotel() {
                         </div>
                     </div>
                 </div>
+                <div class="mx-auto py-5 px-2 w-50">
+                    <h3 class="proj-heading-profile">Users who like {hotel.name} <FaUser class="proj-color-fa-user-plus" /></h3>
+                    <ul class="list-group">
+                    {userLikes &&
+                        userLikes.map((user) => (
+                    <Link to={`/Lodger/Profile/${user._id}`}>
+                        <li class="list-group-item proj-bg-color-ul proj-font-ul">{user.firstName} {user.lastName}</li>
+                    </Link>
+                    ))}
+                </ul>
+            </div>
             </div>
             </>
             )}
