@@ -107,7 +107,7 @@ function UserDetails() {
                     <Link
                         to={`/Lodger/Profile/${follows.followed._id}`}
                         key={follows._id}
-                        className="list-group-item"
+                        className="list-group-item proj-bg-color-ul"
                     >
                         {follows.followed.firstName} {follows.followed.lastName} (@
                         {follows.followed.username})
@@ -124,7 +124,7 @@ function UserDetails() {
                     <Link
                         to={`/Lodger/Profile/${follows.follower._id}`}
                         key={follows._id}
-                        className="list-group-item"
+                        className="list-group-item proj-bg-color-ul"
                     >
                         {follows.follower.firstName} {follows.follower.lastName} (@
                         {follows.follower.username})

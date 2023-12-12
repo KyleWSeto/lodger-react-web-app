@@ -23,7 +23,8 @@ function Profile() {
     const [user, setUser] = useState(null);
     // const reviews = useSelector((state) => state.reviewsReducer.reviews);
     // const review = useSelector((state) => state.reviewsReducer.review);;
-    // const [following, setFollowing] = useState([]);
+    const [followers, setFollowers] = useState([]);
+    const [following, setFollowing] = useState([]);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -32,7 +33,8 @@ function Profile() {
       const user = await client.account();
       setUser(user);
       // fetchReviews(userId);
-      // fetchFollowing(user._id);
+      fetchFollowers(user._id);
+      fetchFollowing(user._id);
     } catch (error) {
       navigate("/Lodger/Login");
     }
@@ -75,15 +77,20 @@ function Profile() {
 //     dispatch(setReviews(reviews));
 //   };
 
-//   const fetchFollowing = async (userId) => {
-//     const following = await followsClient.findUsersFollowedByUser(userId);
-//     setFollowing(following);
-//   };
+const fetchFollowers = async (userId) => {
+    const followers = await followsClient.findUsersFollowingUser(userId);
+    setFollowers(followers);
+  };
+
+  const fetchFollowing = async (userId) => {
+    const following = await followsClient.findUsersFollowedByUser(userId);
+    setFollowing(following);
+  };
 
   useState(() => {
-    fetchUser(userId);
+    fetchUser();
     searchForHotels(searchText);
-  }, [userId]);
+  }, []);
     return (
         <div class="proj_bg_color">
                 <div class="proj-bg-color-profile">
@@ -229,25 +236,39 @@ function Profile() {
                     </div>
                 </div>
                 <div class="proj-bg-color-follow">
-                  <div class="mx-auto py-5 px-2 w-50">
-                      <h3 class="proj-heading-profile">Following <FaUserPlus class="proj-color-fa-user-plus" /></h3>
-                      <ul class="list-group">
-                        <a href="/" class="proj-decoration-link"><li class="list-group-item proj-bg-color-ul proj-font-ul">[following id name]</li></a>
-                        <a href="/" class="proj-decoration-link"><li class="list-group-item proj-bg-color-ul proj-font-ul">[following id name]</li></a>
-                        <a href="/" class="proj-decoration-link"><li class="list-group-item proj-bg-color-ul proj-font-ul">[following id name]</li></a>
-                    </ul>
-                  </div>
+              <div class="mx-auto py-5 px-2 w-50">
+                  <h3 class="proj-heading-profile">Following <FaUserPlus class="proj-color-fa-user-plus" /></h3>
+                  <ul class="list-group">
+                  {following.map((follows) => (
+                    <Link
+                        to={`/Lodger/Profile/${follows.followed._id}`}
+                        key={follows._id}
+                        className="list-group-item proj-bg-color-ul"
+                    >
+                        {follows.followed.firstName} {follows.followed.lastName} (@
+                        {follows.followed.username})
+                    </Link>
+                    ))}
+                </ul>
               </div>
-              <div class="proj-bg-color-follow">
-                <div class="mx-auto py-5 px-2 w-50">
-                    <h3 class="proj-heading-profile">Followers <FaUserPlus class="proj-color-fa-user-plus"/></h3>
-                    <ul class="list-group">
-                      <a href="/" class="proj-decoration-link"><li class="list-group-item proj-bg-color-ul proj-font-ul">[follower id name]</li></a>
-                      <a href="/" class="proj-decoration-link"><li class="list-group-item proj-bg-color-ul proj-font-ul">[follower id name]</li></a>
-                      <a href="/" class="proj-decoration-link"><li class="list-group-item proj-bg-color-ul proj-font-ul">[follower id name]</li></a>
-                    </ul>
-            </div>
+          </div>
+          <div class="proj-bg-color-follow">
+            <div class="mx-auto py-5 px-2 w-50">
+                <h3 class="proj-heading-profile">Followers <FaUserPlus class="proj-color-fa-user-plus"/></h3>
+                <ul class="list-group">
+                {followers.map((follows) => (
+                    <Link
+                        to={`/Lodger/Profile/${follows.follower._id}`}
+                        key={follows._id}
+                        className="list-group-item proj-bg-color-ul"
+                    >
+                        {follows.follower.firstName} {follows.follower.lastName} (@
+                        {follows.follower.username})
+                    </Link>
+                    ))}
+                </ul>
         </div>
+    </div>
     </div> 
     )
 }
