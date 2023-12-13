@@ -83,8 +83,6 @@ const fetchFollowers = async (userId) => {
     fetchUser();
     searchForHotels(searchText);
   }, [userId]);
-  console.log(review._id);
-  console.log(review);
     return (
         <div className="proj_bg_color">
                 <div className="proj-bg-color-profile">
@@ -100,7 +98,7 @@ const fetchFollowers = async (userId) => {
                                 </div>
                                 <div className="ms-auto d-grid gap-2 d-md-block">
                                   <Link
-                                    to={`/Lodger/Profile/Edit`}
+                                    to={`/Lodger/Profile/${currentUser._id}/Edit`}
                                     className={`${pathname.includes(`Edit`)}`}>
                                         <btn className="btn proj-color-btn">
                                             <FaPen /> 

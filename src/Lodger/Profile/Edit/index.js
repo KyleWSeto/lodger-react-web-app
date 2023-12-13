@@ -2,10 +2,11 @@ import { Link, useLocation } from "react-router-dom";
 import { FaUser, FaPen } from "react-icons/fa";
 import * as client from "../../users/client";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./index.css";
 
 function Edit() {
+    const { userId } = useParams();
     const { pathname } = useLocation();
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
@@ -38,7 +39,7 @@ function Edit() {
                         </div>
                         <div className="ms-auto">
                             <Link
-                                to={`/Lodger/Profile`}
+                                to={`/Lodger/Profile/${userId}`}
                                 className={`${pathname.includes(`Profile`)}`}>
                                 <btn className="btn proj-color-btn">
                                     <FaPen /> 
@@ -89,14 +90,14 @@ function Edit() {
                         </div>
                         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                             <Link
-                            to={`/Lodger/Profile`}
+                            to={`/Lodger/Profile/${userId}`}
                             className={`${pathname.includes(`Profile`)}`}>
                                 <btn onClick={updateUser}>
                                     <a href="index.html" className="btn proj-color-btn float-end">Save Profile</a>
                                 </btn>
                             </Link>
                             <Link
-                            to={`/Lodger/Profile`}
+                            to={`/Lodger/Profile/${userId}`}
                             className={`${pathname.includes(`Profile`)}`}>
                                 <btn>
                                     <a href="index.html" className="btn proj-color-btn float-end">Cancel</a>

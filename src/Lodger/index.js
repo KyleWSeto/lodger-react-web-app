@@ -26,7 +26,7 @@ function Lodger() {
             <Route path="/SearchHotel/:id" element={<SearchHotel />} />
             <Route path="/Profile/:id" element={<Profile />} />
             <Route path="/Profile/More/:id" element={<UserDetails />} />
-            <Route path="/Profile/Edit" element={<Edit />} />
+            <Route path="/Profile/:id/Edit" element={<Edit />} />
           </Routes>
           </div>
       </div>
