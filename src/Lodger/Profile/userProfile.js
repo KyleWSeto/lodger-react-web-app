@@ -101,10 +101,12 @@ function UserDetails() {
                     <div className="mb-2 mx-auto p-4">
                         <h2 className="proj-heading-profile">{user?.firstName} {user?.lastName}</h2>
                     </div>
+                    {user?._id === currentUser._id && (
                     <div className="mb-2 mx-auto p-4">
                         <h3 className="proj-heading-profile"><u>Contact</u></h3>
                         <h4 className="proj-heading-profile">{user?.contact}</h4>
                     </div>
+                    )}
                     <div className="mb-2 mx-auto p-4">
                         <h3 className="proj-heading-profile"><u>Interests</u></h3>
                         <h4 className="proj-heading-profile">{user?.interests}</h4>

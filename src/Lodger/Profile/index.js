@@ -4,6 +4,7 @@ import * as client from "../users/client";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as followsClient from "../follows/client";
+import * as likesClient from "../likes/client";
 import * as reviewsClient from "../reviews/client";
 import { setCurrentUser } from "../users/reducer";
 import { useDispatch } from "react-redux";
@@ -14,6 +15,7 @@ function Profile() {
     const { userId } = useParams();
     const { pathname } = useLocation();
     const [user, setUser] = useState(null);
+    const [userLikes, setUserLikes] = useState([]);
     const [reviews, setReviews] = useState([]);
     const [followers, setFollowers] = useState([]);
     const [following, setFollowing] = useState([]);
@@ -25,6 +27,7 @@ function Profile() {
       const user = await client.account();
       setUser(user);
       review.userId = user._id;
+      fetchLikes(user._id);
       fetchReviews(user._id);
       fetchFollowers(user._id);
       fetchFollowing(user._id);
@@ -44,6 +47,11 @@ function Profile() {
     const searchForHotels = async (text) => {
         const results = await amadeusClient.fetchHotelsByName(text);
         setSearchResults(results);
+      };
+
+      const fetchLikes = async (userId) => {
+        const likes = await likesClient.findHotelsUserLikes(userId);
+        setUserLikes(likes);
       };
 
       const [review, setReview] = useState({
@@ -126,34 +134,19 @@ const fetchFollowers = async (userId) => {
                             </div>
                         </div> 
                     </div>
-                </div>
-                <div className="proj-bg-color-for-you">
-                    <div className="mx-auto pt-5 px-2 w-50">
-                        <h3 className="proj-heading-profile">Likes <FaThumbsUp className="proj-color-fa-thumbs-up" /></h3>
-                        <div className="row d-flex py-5">
-                        {searchResults &&
-                            searchResults.slice(7, 10).map((hotel) => (
-                                <div className="col justify-content-center py-2">
-                                    <div className="card" style={{width: "18rem"}}>
-                                        <h3 className="card-header proj-heading-card proj-color-card-header">{hotel.name}</h3>
-                                        <div className="card-body proj-color-card-body">
-                                        <h5 className="card-title proj-heading-card">{hotel.address.cityName}, {hotel.address.countryCode}</h5>
-                                        <h5 className="card-title proj-heading-card">Not enough ratings <FaStar className="proj-color-fa-star" /></h5>
-                                        <p className="card-text">
-                                        <Link
-                                                to={`/Lodger/Search/${hotel.id}`}
-                                                style={{ textDecoration: 'none' }}
-                                                className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
-                                            <p className="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information
-                                            </p>
-                                            </Link>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>        
-                            ))}
-                        </div>
+                    {userLikes && (userLikes.length !== 0) && (
+                    <div className="mx-auto py-5 px-2 w-50">
+                        <h3 className="proj-heading-profile">Hotels {user?.firstName} Likes <FaUser className="proj-color-fa-user-plus" /></h3>
+                        <ul className="list-group">
+                        {userLikes &&
+                            userLikes.map((like) => (
+                        <Link to={`/Lodger/Search/${like.hotelId}`}>
+                            <li className="list-group-item proj-bg-color-ul proj-font-ul">{like.hotelId}</li>
+                        </Link>
+                        ))}
+                        </ul>
                     </div>
+                    )}
                 </div>
                 <div className="proj-bg-color-for-you">
                     <div className="mx-auto pt-5 px-2 w-50">
@@ -216,7 +209,7 @@ const fetchFollowers = async (userId) => {
                     </div>
                 </div>
                 <div className="proj-bg-color-follow">
-              <div className="mx-auto py-5 px-2 w-50">
+                <div className="mx-auto py-5 px-2 w-50">
                   <h3 className="proj-heading-profile">Following <FaUserPlus className="proj-color-fa-user-plus" /></h3>
                   <ul className="list-group">
                   {following.map((follows) => (
