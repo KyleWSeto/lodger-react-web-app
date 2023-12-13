@@ -221,7 +221,7 @@ const fetchFollowers = async (userId) => {
                   <ul className="list-group">
                   {following.map((follows) => (
                     <Link
-                        to={`/Lodger/Profile/More/${follows.followed._id}`}
+                        to={`/Lodger/Profile/${follows.followed._id}`}
                         key={follows._id}
                         className="list-group-item proj-bg-color-ul"
                     >
@@ -238,7 +238,7 @@ const fetchFollowers = async (userId) => {
                 <ul className="list-group">
                 {followers.map((follows) => (
                     <Link
-                        to={`/Lodger/Profile/More/${follows.follower._id}`}
+                        to={`/Lodger/Profile/${follows.follower._id}`}
                         key={follows._id}
                         className="list-group-item proj-bg-color-ul"
                     >
