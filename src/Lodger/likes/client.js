@@ -23,11 +23,11 @@ export const deleteUserLikesHotel = (userId, hotelId) => {
   return response.data;
 };
 
-export const findHotelsUserLikes = (userId) => {
-  const response = request.get(`${LIKES_API}/users/${userId}/likes`);
+export const findHotelsUserLikes = async (userId) => {
+  const response = await request.get(`${LIKES_API}/users/${userId}/likes`);
   return response.data;
 };
-export const findUsersWhoLikeHotel = (hotelId) => {
-  const response = request.get(`${LIKES_API}/hotels/${hotelId}/likes`);
+export const findUsersWhoLikeHotel = async (hotelId) => {
+  const response = await request.get(`${LIKES_API}/hotels/${hotelId}/likes`);
   return response.data;
 };

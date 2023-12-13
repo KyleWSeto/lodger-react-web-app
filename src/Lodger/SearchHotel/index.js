@@ -18,7 +18,12 @@ function SearchHotel() {
     const fetchHotel = async (id) => {
         const result = await client.fetchHotelById(id);
         setHotel(result);
-        fetchUsersLikeHotel(id);
+        fetchUsersLikeHotel(result.id);
+      };
+
+      const fetchUsersLikeHotel = async (id) => {
+        const result = await likesClient.findUsersWhoLikeHotel(id);
+        setUserLikes(result);
       };
 
       const like = async () => {
@@ -29,14 +34,15 @@ function SearchHotel() {
         await likesClient.deleteUserLikesHotel(currentUser._id, id);
       };
 
-      const fetchUsersLikeHotel = async (id) => {
-        const result = await likesClient.findUsersWhoLikeHotel(id); // DEBUG: undefined returned from node app
-        setUserLikes(result);
-      };
-
     const fetchCurrentUser = async () => {
         const user = await userService.account();
         setCurrentUser(user);
+      };
+
+      const alreadyLiked = () => {
+        return userLikes.find(
+          (like) => like.user === currentUser._id
+        );
       };
     
       useEffect(() => {
@@ -58,14 +64,17 @@ function SearchHotel() {
                         <h1 className="proj-heading-profile">Details</h1>
                         <div className="float-end">
                             <ProtectedContent>
+                            {alreadyLiked() ? (
                             <btn onClick={unlike} className="btn proj-color-btn-unlike">
                                 <i className="fa fa-minus"></i>
                                 Unlike
                             </btn>
+                            ) : (
                             <btn onClick={like} className="btn proj-color-btn-like">
                                 <i className="fa fa-plus"></i>
                                 Like
                             </btn>
+                            )}
                             </ProtectedContent>
                         </div>
                         <div className="py-2">
@@ -100,9 +109,9 @@ function SearchHotel() {
                     <h3 className="proj-heading-profile">Users who like {hotel.name} <FaUser className="proj-color-fa-user-plus" /></h3>
                     <ul className="list-group">
                     {userLikes &&
-                        userLikes.map((user) => (
-                    <Link to={`/Lodger/Profile/${user._id}`}>
-                        <li className="list-group-item proj-bg-color-ul proj-font-ul">{user.firstName} {user.lastName}</li>
+                        userLikes.map((like) => (
+                    <Link to={`/Lodger/Profile/${like.user}`}>
+                        <li className="list-group-item proj-bg-color-ul proj-font-ul">{like.user}</li>
                     </Link>
                     ))}
                 </ul>
