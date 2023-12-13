@@ -60,6 +60,10 @@ function Profile() {
         await reviewsClient.deleteReview(reviewId);
       };
 
+      const updateReview = async (reviewId, review) => {
+        await reviewsClient.updateReview(reviewId, review);
+      };
+
   const fetchReviews = async (userId) => {
     const reviews = await reviewsClient.findReviewsForUser(userId);
     setReviews(reviews);
@@ -79,6 +83,8 @@ const fetchFollowers = async (userId) => {
     fetchUser();
     searchForHotels(searchText);
   }, [userId]);
+  console.log(review._id);
+  console.log(review);
     return (
         <div className="proj_bg_color">
                 <div className="proj-bg-color-profile">
@@ -171,7 +177,7 @@ const fetchFollowers = async (userId) => {
                                         Add
                                     </btn>
                                     <btn 
-                                    // onClick={() => dispatch(updateReview(review))} 
+                                    onClick={() => updateReview(review._id, review)} 
                                     className="btn proj-color-btn-update">
                                         <FaAdjust /> 
                                         Update
@@ -189,7 +195,7 @@ const fetchFollowers = async (userId) => {
                                     <li key={index} className="list-group-item proj-bg-color-ul-review">
                                     <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                                         <btn 
-                                        // onClick={() => dispatch(setReview(review))} 
+                                        onClick={() => setReview(review)} 
                                         className="btn proj-color-btn-edit">
                                             <FaAdjust />  
                                             Edit

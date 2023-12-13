@@ -22,3 +22,8 @@ export const createReview = async (userId, review) => {
   );
   return response.data;
 };
+
+export const updateReview = async (reviewId, review) => {
+    const response = await request.put(`${REVIEWS_URL}/${reviewId}`, review);
+    return response.data;
+  };
