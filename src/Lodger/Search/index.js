@@ -40,7 +40,7 @@ function Search() {
                                           <h5 className="card-title proj-heading-card">Not enough ratings <FaStar className="proj-color-fa-star" /></h5>
                                           <p className="card-text">
                                           <Link
-                                                to={`/Lodger/SearchHotel/${hotel.id}`}
+                                                to={`/Lodger/Search/${hotel.id}`}
                                                 style={{ textDecoration: 'none' }}
                                                 className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
                                               <p className="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information

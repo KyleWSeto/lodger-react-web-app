@@ -14,7 +14,6 @@ function Edit() {
       try {
         const user = await client.account();
         setUser(user);
-        // fetchFollowing(user._id);
       } catch (error) {
         navigate("/Lodger/Login");
       }
@@ -39,7 +38,7 @@ function Edit() {
                         </div>
                         <div className="ms-auto">
                             <Link
-                                to={`/Lodger/Profile/${userId}`}
+                                to={`/Lodger/Profile`}
                                 className={`${pathname.includes(`Profile`)}`}>
                                 <btn className="btn proj-color-btn">
                                     <FaPen /> 
@@ -90,14 +89,14 @@ function Edit() {
                         </div>
                         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                             <Link
-                            to={`/Lodger/Profile/${userId}`}
+                            to={`/Lodger/Profile`}
                             className={`${pathname.includes(`Profile`)}`}>
                                 <btn onClick={updateUser}>
                                     <a href="index.html" className="btn proj-color-btn float-end">Save Profile</a>
                                 </btn>
                             </Link>
                             <Link
-                            to={`/Lodger/Profile/${userId}`}
+                            to={`/Lodger/Profile`}
                             className={`${pathname.includes(`Profile`)}`}>
                                 <btn>
                                     <a href="index.html" className="btn proj-color-btn float-end">Cancel</a>

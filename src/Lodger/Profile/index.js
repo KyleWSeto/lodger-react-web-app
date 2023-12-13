@@ -6,13 +6,12 @@ import { useNavigate } from "react-router-dom";
 import * as followsClient from "../follows/client";
 import * as reviewsClient from "../reviews/client";
 import { setCurrentUser } from "../users/reducer";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as amadeusClient from "../SearchHotel/amadeus-service";
 import "./index.css";
 
 function Profile() {
     const { userId } = useParams();
-    const { currentUser } = useSelector((state) => state.usersReducer);
     const { pathname } = useLocation();
     const [user, setUser] = useState(null);
     const [reviews, setReviews] = useState([]);
@@ -25,6 +24,7 @@ function Profile() {
     try {
       const user = await client.account();
       setUser(user);
+      review.userId = user._id;
       fetchReviews(user._id);
       fetchFollowers(user._id);
       fetchFollowing(user._id);
@@ -49,7 +49,6 @@ function Profile() {
       const [review, setReview] = useState({
         review: "New Review",
         description: "Review Description",
-        userId: currentUser._id,
       });
 
       const addReview = async (userId, review) => {
@@ -98,7 +97,7 @@ const fetchFollowers = async (userId) => {
                                 </div>
                                 <div className="ms-auto d-grid gap-2 d-md-block">
                                   <Link
-                                    to={`/Lodger/Profile/${currentUser._id}/Edit`}
+                                    to={`/Lodger/Profile/Edit`}
                                     className={`${pathname.includes(`Edit`)}`}>
                                         <btn className="btn proj-color-btn">
                                             <FaPen /> 
@@ -142,7 +141,7 @@ const fetchFollowers = async (userId) => {
                                         <h5 className="card-title proj-heading-card">Not enough ratings <FaStar className="proj-color-fa-star" /></h5>
                                         <p className="card-text">
                                         <Link
-                                                to={`/Lodger/SearchHotel/${hotel.id}`}
+                                                to={`/Lodger/Search/${hotel.id}`}
                                                 style={{ textDecoration: 'none' }}
                                                 className={`list-group-items ${pathname.includes(`Search`) && "active"}`}>
                                             <p className="link-offset-2 link-underline link-underline-opacity-0 proj-color-link">More information

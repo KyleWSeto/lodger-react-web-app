@@ -17,7 +17,7 @@ function Login() {
   const signUp = async () => {
     try {
       const user = await client.signUp({ firstName, lastName, username, password });
-      navigate("/Lodger/Profile/" + user._id);
+      navigate("/Lodger/Profile");
     } catch (error) {
       setError(error.message);
     }
@@ -26,7 +26,7 @@ function Login() {
     try {
       const user = await client.signIn({ username, password });
       dispatch(setCurrentUser(user));
-      navigate("/Lodger/Profile/" + user._id);
+      navigate("/Lodger/Profile");
     } catch (error) {
       setError(error.message);
     }
