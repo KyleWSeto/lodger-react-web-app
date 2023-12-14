@@ -105,17 +105,19 @@ function SearchHotel() {
                         </div>
                     </div>
                 </div>
-                <div className="mx-auto py-5 px-2 w-50">
-                    <h3 className="proj-heading-profile">Users who like {hotel.name} <FaUser className="proj-color-fa-user-plus" /></h3>
-                    <ul className="list-group">
-                    {userLikes &&
-                        userLikes.map((like) => (
-                    <Link to={`/Lodger/Profile/${like.user}`}>
-                        <li className="list-group-item proj-bg-color-ul proj-font-ul">{like.user}</li>
-                    </Link>
-                    ))}
-                </ul>
-            </div>
+                {userLikes && (userLikes.length !== 0) && (
+                    <div className="mx-auto py-5 px-2 w-50">
+                        <h3 className="proj-heading-profile">Users who like {hotel.name} <FaUser className="proj-color-fa-user-plus" /></h3>
+                        <ul className="list-group">
+                        {userLikes &&
+                            userLikes.map((like) => (
+                        <Link to={`/Lodger/Profile/${like.user}`}>
+                            <li className="list-group-item proj-bg-color-ul proj-font-ul">{like.user}</li>
+                        </Link>
+                        ))}
+                        </ul>
+                    </div>
+                )}
             </div>
             </>
             )}
