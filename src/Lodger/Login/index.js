@@ -11,12 +11,13 @@ function Login() {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [role, setRole] = useState("");
   const [error, setError] = useState(null); 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const signUp = async () => {
     try {
-      const user = await client.signUp({ firstName, lastName, username, password });
+      const user = await client.signUp({ firstName, lastName, username, password, role });
       navigate("/Lodger/Profile");
     } catch (error) {
       setError(error.message);
@@ -71,11 +72,11 @@ function Login() {
                           <h3 className="proj-heading-font proj-heading-color">Roles</h3>
                           <div className="form-check form-check-inline">
                             <div className="form-check form-check-inline">
-                              <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
+                              <input onChange={() => setRole("USER")} className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
                               <label className="form-check-label proj-label-font proj-label-color" for="inlineRadio1">User</label>
                             </div>
                             <div className="form-check form-check-inline">
-                              <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+                              <input onChange={() => setRole("ADMIN")} className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
                               <label className="form-check-label proj-label-font proj-label-color" for="inlineRadio2">Admin</label>
                             </div>
                             <div className="invalid-feedback">

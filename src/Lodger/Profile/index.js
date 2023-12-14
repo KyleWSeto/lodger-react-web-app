@@ -148,9 +148,10 @@ const fetchFollowers = async (userId) => {
                     </div>
                     )}
                 </div>
+                {user?.role === "ADMIN" && (
                 <div className="proj-bg-color-for-you">
                     <div className="mx-auto pt-5 px-2 w-50">
-                        {user?.role === "ADMIN" && (
+                        
                         <div className="row d-flex">
                             <h3 className="proj-heading-profile py-5">Admin Reviews <FaThumbsUp className="proj-color-fa-thumbs-up" /></h3>
                             <form>
@@ -205,9 +206,9 @@ const fetchFollowers = async (userId) => {
                                 </ul>
                             </div>
                         </div>
-                        )}
                     </div>
                 </div>
+                )}
                 <div className="proj-bg-color-follow">
                 <div className="mx-auto py-5 px-2 w-50">
                   <h3 className="proj-heading-profile">Following <FaUserPlus className="proj-color-fa-user-plus" /></h3>
