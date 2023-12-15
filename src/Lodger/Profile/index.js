@@ -103,11 +103,11 @@ const fetchFollowers = async (userId) => {
                                 <div className="float-start">
                                     <FaUser size={84} />
                                 </div>
-                                <div className="ms-auto d-grid gap-2 d-md-block">
+                                <div className="ms-auto">
                                   <Link
                                     to={`/Lodger/Profile/Edit`}
                                     className={`${pathname.includes(`Edit`)}`}>
-                                        <btn className="btn proj-color-btn">
+                                        <btn className="btn proj-color-btn mx-2">
                                             <FaPen /> 
                                             Edit Profile
                                         </btn>

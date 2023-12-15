@@ -131,7 +131,7 @@ function UserDetails() {
                 </div>
             )}
         </div>
-        {user?.role === "ADMIN" && (
+        {reviews && (reviews.length !== 0) && (
             <div className="proj-bg-color-for-you">
                 <div className="mx-auto pt-5 px-2 w-50">
                     <div className="row d-flex">
